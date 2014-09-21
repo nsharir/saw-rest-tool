@@ -1,0 +1,34 @@
+{"entity_result_list": [
+    {
+        "entity": {
+            "entity_type": "EntityModel",
+            "properties": {
+                "AffectsActualService": "10014",
+                "Description": "A",
+                "TemplateValues": "{\"complexTypeProperties\":[]}",
+                "DisplayLabel": "A",
+                "EmsCreationTime": 1410521806889,
+                "PhaseId": "Active",
+                "ModelType": "Change",
+                "ChangeWorkflowType": "StandardChange",
+                "IsDeleted": false,
+                "Id": "10421",
+                "ProcessId": "generic",
+                "LastUpdateTime": 1410521806889
+            },
+            "related_properties": {}
+        },
+        "completion_status": "FAILED",
+        "errorDetails": {
+            "httpStatus": 500,
+            "message": "Attribute can be edited only in Draft phase",
+            "developer_message": "",
+            "message_key": "AttributeCanBeEditedInDraftPhaseOnly.displayLabel",
+            "message_rb": "entity_model_workflow_errors",
+            "message_arguments": [],
+            "exceptionType": "WorkflowException"
+        }
+    }
+], "relationship_result_list": [], "translation_result_list": [], "meta": {
+    "completion_status": "FAILED"
+}}

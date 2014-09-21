@@ -1,0 +1,25 @@
+{"entity_result_list": [
+    {
+        "entity": {
+            "entity_type": "Location",
+            "properties": {
+                "LocationSupervisor": "32424",
+                "Id": "10474",
+                "LastUpdateTime": 1410717841083
+            },
+            "related_properties": {}
+        },
+        "completion_status": "FAILED",
+        "errorDetails": {
+            "httpStatus": 409,
+            "message": "The entity was already updated by another user, please refresh to get latest entity changes",
+            "developer_message": "",
+            "message_key": "entity.was.updated",
+            "message_rb": "locale/platform_ems_errors",
+            "message_arguments": [],
+            "exceptionType": "EntityAlreadyUpdatedByAnotherUser"
+        }
+    }
+], "relationship_result_list": [], "translation_result_list": [], "meta": {
+    "completion_status": "FAILED"
+}}

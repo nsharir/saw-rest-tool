@@ -1,0 +1,17 @@
+{
+    "typesToPull":["Location","Company","ITProcessRecordCategory","Person","PersonGroup","ActualService","Category","ServiceDefinition","Offering"],
+
+    "identificationRules":[
+        {"type":"Person" , "IdentificationFieldName":"Upn" },
+        {"type":"PersonGroup" , "IdentificationFieldName":"Upn" },
+        {"type":"ServiceDefinition" , "IdentificationFieldName":"DisplayLabel" },
+        {"type":"Offering" , "IdentificationFieldName":"DisplayLabel" },
+        {"type":"Category" , "IdentificationFieldName":"DisplayLabel" },
+        {"type":"ITProcessRecordCategory" , "IdentificationFieldName":"DisplayLabel" },
+        {"type":"ActualService" , "IdentificationFieldName":"DisplayLabel" },
+        {"type":"Location" , "IdentificationFieldName":"DisplayName" },
+        {"type":"FulfillmentPlan" , "IdentificationFieldName":"DisplayLabel" },
+        {"type":"Company" , "IdentificationFieldName":"DisplayLabel" }
+
+    ]
+}
