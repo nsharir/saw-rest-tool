@@ -35,30 +35,13 @@ public class Main {
         Configuration.load();
 
 
-        Server ALProd = new Server("https://mslon001pngx.saas.hp.com/","nadav.sharir@hp.com","************","226830052");
-        Server ALDev =  new Server("https://mslon001pngx.saas.hp.com/","nadav.sharir@hp.com","************","733658382");
+        Server ALDev =  new Server("https://mslon001pngx.saas.hp.com/","nadav.sharir@hp.com","********","733658382");
 
         ALDev.authenticate();
-        ALProd.authenticate();
 
         List<EntityInstance> listDev = ALDev.getEntityReaderAPI().readFullLayout("PersonGroup", new FilterBuilder(new SimpleFilterElement("Upn", "=", "10989")));    //
-        List<EntityInstance> listProd = ALProd.getEntityReaderAPI().readFullLayout("PersonGroup", new FilterBuilder(new SimpleFilterElement("Upn", "=", "10810")));    //
 
         System.out.println(listDev.size());
-        System.out.println(listProd.size());
-
-        Object devId = listDev.get(0).getFieldValue("Id");
-        System.out.println("Dev ID:" + devId);
-
-        Object prodId = listProd.get(0).getFieldValue("Id");
-        System.out.println("Prod ID:" + prodId);
-
-
-         listDev = ALDev.getEntityReaderAPI().readFullLayout("PersonGroup", new FilterBuilder(new SimpleFilterElement("Id", "=", prodId)));    //
-         listProd = ALProd.getEntityReaderAPI().readFullLayout("PersonGroup", new FilterBuilder(new SimpleFilterElement("Id", "=", devId)));    //
-
-        System.out.println(listDev.size());
-        System.out.println(listProd.size());
 
         //listDev.get(0).getFieldValue("Name");
 

@@ -47,7 +47,7 @@ public class Server {
 
             Log.log("Auth URL: " + url.toString());
 
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            HttpURLConnection con = ConnectionUtils.openConnection(url);
             con.setRequestMethod("GET");
 
             token = ConnectionUtils.connectAndGetResponse(con);
@@ -113,7 +113,7 @@ public class Server {
     public HttpURLConnection buildConnection(String uri){
         try {
             URL url = new URL(hostUrl+"rest/"+tenant+"/"+uri);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            HttpURLConnection connection = ConnectionUtils.openConnection(url);
             connection.setRequestProperty("Cookie", "LWSSO_COOKIE_KEY="+ token+";"+"TENANTID="+tenant+";" );
             return connection;
         } catch (Exception e) {
