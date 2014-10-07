@@ -30,7 +30,8 @@ public class Server {
     private MetadataAPI metadataAPI;
     private EntityReaderAPI entityReaderAPI;
     private EntityWriterAPI  entityWriterAPI;
-
+    private RMSReaderAPI rmsReaderAPI;
+    private RMSWriterAPI rmsWriterAPI;
 
     public Server(String hostUrl, String name, String password, String tenant) {
         this.hostUrl = hostUrl;
@@ -60,6 +61,8 @@ public class Server {
         metadataAPI = new MetadataAPI(this);
         entityReaderAPI = new EntityReaderAPI(this );
         entityWriterAPI = new EntityWriterAPI(this);
+        rmsReaderAPI = new RMSReaderAPI(this);
+        rmsWriterAPI = new RMSWriterAPI(this);
 
         Log.log("Auth Token: "+ token);
 
@@ -131,5 +134,13 @@ public class Server {
 
     public EntityWriterAPI getEntityWriterAPI() {
         return entityWriterAPI;
+    }
+
+    public RMSReaderAPI getRmsReaderAPI() {
+        return rmsReaderAPI;
+    }
+
+    public RMSWriterAPI getRmsWriterAPI() {
+        return rmsWriterAPI;
     }
 }
