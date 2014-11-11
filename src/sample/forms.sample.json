@@ -1,0 +1,2073 @@
+{"completionStatus": "OK", "results": [
+    {
+        "id": "53badfdb0cf22a3529d8adec",
+        "name": "preview",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "RequestDetails",
+                "domain": "saw",
+                "resourceKey": "RequestDetailSection",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Description",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AssignedToGroup",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AssignedToPerson",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "RequestedForPerson",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELManagerName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELRespCode_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DatePicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "CreateTime",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "Priority",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Urgency",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "ImpactScope",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "Notes",
+                        "editorType": "RichEditor",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "fieldSize": "LARGE",
+                        "domain": "saw"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfdb0cf22a3529d8adf2",
+        "name": "ctiNewRequest",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "CatalogOffering",
+                "domain": "saw",
+                "resourceKey": "Catalog.SectionHeader.CatalogOffering",
+                "isOpen": false,
+                "isHide": false,
+                "fields": [
+                    {
+                        "modelAttribute": "RequestsOffering",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "Details",
+                "domain": "saw",
+                "resourceKey": "Entity.SectionHeader.Details",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "TextBox",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "DisplayLabel",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Description",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToGroup",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToPerson",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "RequestedForPerson",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactEmail_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactPhone_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELVIPStatus_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "RegisteredForLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "DeliveredToLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "AELManagerName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELRespCode_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELTicketSource_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELSupplierName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELSupplierReference_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "Category",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "RegisteredForActualService",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "Priority",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Urgency",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "ImpactScope",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfdb0cf22a3529d8adfb",
+        "name": "onlyResolution",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "Resolution",
+                "domain": "saw",
+                "resourceKey": "Request.SectionHeader.Resolution",
+                "isOpen": true,
+                "isHide": true,
+                "fields": [
+                    {
+                        "modelAttribute": "AELPastSolution_c",
+                        "editorType": "RichEditor",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "fieldSize": "LARGE"
+                    },
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Solution",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELAcceptDenySolution_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "CompletionCode",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "CloseTime",
+                        "editorType": "DateTimePicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "newLine": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfdc0cf22a3529d8ae11",
+        "name": "ctiClosure",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "Resolution",
+                "domain": "saw",
+                "resourceKey": "Request.SectionHeader.Resolution",
+                "isOpen": false,
+                "isHide": true,
+                "fields": [
+                    {
+                        "modelAttribute": "AELPastSolution_c",
+                        "editorType": "RichEditor",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "fieldSize": "LARGE"
+                    },
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Solution",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELAcceptDenySolution_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "CompletionCode",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfdd0cf22a3529d8ae28",
+        "name": "ctiNewRequestResolution",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "Resolution",
+                "domain": "saw",
+                "resourceKey": "Request.SectionHeader.Resolution",
+                "isOpen": false,
+                "isHide": true,
+                "fields": [
+                    {
+                        "modelAttribute": "AELPastSolution_c",
+                        "editorType": "RichEditor",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "fieldSize": "LARGE"
+                    },
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Solution",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELAcceptDenySolution_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "CompletionCode",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfdd0cf22a3529d8ae29",
+        "name": "defaults",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "Defaults",
+                "domain": "saw",
+                "resourceKey": "Request.SectionHeader.Defaults",
+                "isOpen": true,
+                "isHide": true,
+                "fields": [
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "AssignedToGroup",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "AssignedToPerson",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELTicketSource_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "Status",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Category",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "RegisteredForActualService",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Urgency",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "ImpactScope",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "DisplayLabel",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "fieldSize": "LARGE",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "Description",
+                        "editorType": "RichEditor",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "fieldSize": "LARGE",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "CompletionCode",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM"
+                    },
+                    {
+                        "modelAttribute": "Solution",
+                        "editorType": "RichEditor",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "fieldSize": "LARGE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfdd0cf22a3529d8ae2c",
+        "name": "generalRequest",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "RequestDetails",
+                "domain": "saw",
+                "resourceKey": "RequestDetailSection",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "RichEditor",
+                        "resourceKey": "generalRequest.description",
+                        "domain": "saw",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Description",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "readOnly": false
+                    },
+                    {
+                        "modelAttribute": "Urgency",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true
+                    },
+                    {
+                        "modelAttribute": "DeliveredToLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfde0cf22a3529d8ae37",
+        "name": "serviceRequest",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "RequestDetails",
+                "domain": "saw",
+                "resourceKey": "RequestDetailSection",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "RichEditor",
+                        "resourceKey": "serviceRequest.description",
+                        "domain": "saw",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Description",
+                        "newLine": true,
+                        "isOpposite": false
+                    },
+                    {
+                        "modelAttribute": "AELRespCode_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "DeliveredToLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true,
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELManagerName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true,
+                        "domain": "saw"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfde0cf22a3529d8ae3e",
+        "name": "ctiRequestDescription",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "Details",
+                "domain": "saw",
+                "resourceKey": "Entity.SectionHeader.Details",
+                "isOpen": true,
+                "isHide": true,
+                "fields": [
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Description",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToGroup",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToPerson",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Category",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "RegisteredForActualService",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfde0cf22a3529d8ae42",
+        "name": "custom",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "RequestDetails",
+                "domain": "saw",
+                "resourceKey": "RequestDetailSection",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "TextBox",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "DisplayLabel",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Description",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "TextBox",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Priority",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "ImpactScope",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Urgency",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToGroup",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToPerson",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "AELContactName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true
+                    },
+                    {
+                        "modelAttribute": "AELContactEmail_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true
+                    },
+                    {
+                        "modelAttribute": "AELContactPhone_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "newLine": true
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "RegisteredForActualService",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Status",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "TextBox",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "Solution",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "CompletionCode",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfde0cf22a3529d8ae43",
+        "name": "kmPreview",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "Solution",
+                "domain": "saw",
+                "resourceKey": "solution",
+                "isOpen": true,
+                "isHide": true,
+                "fields": [
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Description",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Solution",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "CompletionCode",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "RegisteredForActualService",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToPerson",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "CloseTime",
+                        "editorType": "DateTimePicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfde0cf22a3529d8ae48",
+        "name": "withoutResolution",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "CatalogOffering",
+                "domain": "saw",
+                "resourceKey": "Catalog.SectionHeader.CatalogOffering",
+                "isOpen": false,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "RequestsOffering",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "RequestDetails",
+                "domain": "saw",
+                "resourceKey": "RequestDetailSection",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "TextBox",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "DisplayLabel",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Description",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "RequestBundle",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "fieldSize": "LARGE"
+                    },
+                    {
+                        "modelAttribute": "RequestedForPerson",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactEmail_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactPhone_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELVIPStatus_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "RegisteredForLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "DeliveredToLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "AELManagerName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELRespCode_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Status",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Notes",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "MORE",
+                        "newLine": true,
+                        "size": 9.0,
+                        "labelSize": 3.0,
+                        "fieldSize": "LARGE",
+                        "modelAttribute": "MORE_1_13"
+                    },
+                    {
+                        "modelAttribute": "AELTicketSource_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "CreateTime",
+                        "editorType": "DateTimePicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "LastUpdateTime",
+                        "editorType": "DateTimePicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "platform"
+                    },
+                    {
+                        "editorType": "DatePicker",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "ExpectedCompletionTime",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    }
+                ]
+            },
+            {
+                "name": "SupplierDetails",
+                "fields": [
+                    {
+                        "modelAttribute": "AELSupplierName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELSupplierReference_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    }
+                ],
+                "isOpen": true,
+                "isHide": false,
+                "resourceKey": "Request.withoutResolution.SupplierDetails.customization"
+            },
+            {
+                "name": "Classification",
+                "domain": "saw",
+                "resourceKey": "Request.SectionHeader.Classification",
+                "isOpen": false,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToGroup",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToPerson",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Category",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "RegisteredForActualService",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "RequestType",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "Priority",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Urgency",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "ImpactScope",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfdf0cf22a3529d8ae51",
+        "name": "new",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "CatalogOffering",
+                "domain": "saw",
+                "resourceKey": "Catalog.SectionHeader.CatalogOffering",
+                "isOpen": false,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "RequestsOffering",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "RequestDetails",
+                "domain": "saw",
+                "resourceKey": "RequestDetailSection",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "TextBox",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "DisplayLabel",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Description",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AssignedToGroup",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "AssignedToPerson",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "RequestedForPerson",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactEmail_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactPhone_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELVIPStatus_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "RegisteredForLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "DeliveredToLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELManagerName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELRespCode_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELTicketSource_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELSupplierName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELSupplierReference_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "Category",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "RegisteredForActualService",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "Priority",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "Urgency",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "MEDIUM",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "ImpactScope",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfdf0cf22a3529d8ae52",
+        "name": "supportRequest",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "RequestDetails",
+                "domain": "saw",
+                "resourceKey": "RequestDetailSection",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "RichEditor",
+                        "resourceKey": "supportRequest.description",
+                        "domain": "saw",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Description",
+                        "newLine": true,
+                        "isOpposite": false
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "resourceKey": "supportRequest.urgency",
+                        "domain": "saw",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Urgency",
+                        "newLine": true,
+                        "isOpposite": false
+                    },
+                    {
+                        "modelAttribute": "DeliveredToLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw",
+                        "newLine": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "53badfdf0cf22a3529d8ae5e",
+        "name": "full",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "CatalogOffering",
+                "domain": "saw",
+                "resourceKey": "Catalog.SectionHeader.CatalogOffering",
+                "isOpen": false,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "RequestsOffering",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "RequestDetails",
+                "domain": "saw",
+                "resourceKey": "RequestDetailSection",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
+                    {
+                        "modelAttribute": "DisplayLabel",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Description",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "RequestedByPerson",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "AELContactName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactEmail_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELContactPhone_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELVIPStatus_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "RegisteredForLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "DeliveredToLocation",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        },
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELManagerName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELRespCode_c",
+                        "editorType": "NumericTextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELTicketSource_c",
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Status",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "CreateTime",
+                        "editorType": "DateTimePicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "LastUpdateTime",
+                        "editorType": "DateTimePicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "platform"
+                    },
+                    {
+                        "editorType": "DatePicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "ExpectedCompletionTime",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    }
+                ]
+            },
+            {
+                "name": "SupplierDetails",
+                "fields": [
+                    {
+                        "modelAttribute": "AELSupplierName_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    },
+                    {
+                        "modelAttribute": "AELSupplierReference_c",
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw"
+                    }
+                ],
+                "isOpen": true,
+                "isHide": false,
+                "resourceKey": "Request.full.SupplierDetails.customization"
+            },
+            {
+                "name": "Categorization",
+                "domain": "saw",
+                "resourceKey": "Request.SectionHeader.Categorization",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToGroup",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "EntityPicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "AssignedToPerson",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "Category",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "modelAttribute": "RegisteredForActualService",
+                        "editorType": "EntityPicker",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "fieldSize": "MEDIUM",
+                        "domain": "saw",
+                        "dataProvider": {
+                            "id": "ENTITY_DATA_PROVIDER"
+                        }
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "RequestType",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Priority",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "Urgency",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "ImpactScope",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    }
+                ]
+            },
+            {
+                "name": "Resolution",
+                "domain": "saw",
+                "resourceKey": "Request.SectionHeader.Resolution",
+                "isOpen": false,
+                "isHide": false,
+                "fields": [
+                    {
+                        "editorType": "RichEditor",
+                        "fieldSize": "LARGE",
+                        "labelSize": 2.0,
+                        "size": 10.0,
+                        "modelAttribute": "Solution",
+                        "newLine": true,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DropDownList",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "CompletionCode",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    },
+                    {
+                        "editorType": "DatePicker",
+                        "fieldSize": "SMALL",
+                        "labelSize": 0.0,
+                        "size": 0.0,
+                        "modelAttribute": "CloseTime",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "domain": "saw"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "54041ae10cf2f32339d5aeeb",
+        "name": "requestInvolvedCisForm",
+        "domain": "saw",
+        "entityType": "Request",
+        "sections": [
+            {
+                "name": "InvolvedDevices",
+                "isOpen": true,
+                "domain": "saw",
+                "resourceKey": "involvedDevices",
+                "fields": [
+                    {
+                        "modelAttribute": "DeviceAffectedByRequest",
+                        "editorType": "MultiEntityPicker",
+                        "size": 10.0,
+                        "labelSize": 2.0,
+                        "fieldSize": "LARGE",
+                        "isOpposite": true
+                    }
+                ]
+            },
+            {
+                "name": "InvolvedSystemElements",
+                "isOpen": true,
+                "domain": "saw",
+                "resourceKey": "involvedSystemElements",
+                "fields": [
+                    {
+                        "modelAttribute": "SystemElementAffectedByRequest",
+                        "editorType": "MultiEntityPicker",
+                        "size": 10.0,
+                        "labelSize": 2.0,
+                        "fieldSize": "LARGE",
+                        "isOpposite": true
+                    }
+                ]
+            }
+        ]
+    }
+], "totalCount": 0}
