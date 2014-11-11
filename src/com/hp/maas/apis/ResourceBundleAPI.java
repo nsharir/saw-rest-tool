@@ -1,9 +1,7 @@
 package com.hp.maas.apis;
 
-import com.hp.maas.apis.model.rb.ResourceBundle;
 import com.hp.maas.apis.model.rb.ResourceBundleEntry;
 import com.hp.maas.apis.model.rb.ResourceBundleParser;
-import com.hp.maas.apis.model.rms.RMSInstance;
 import com.hp.maas.utils.ConnectionUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -88,24 +86,35 @@ public class ResourceBundleAPI {
         }
     }
 
-    public ResourceBundle getResourceBundle(String bundle, String locale) {
-        String uri = "l10n/bundles?bundleLocale="+locale+"&bundleNames="+bundle;
+    public void updateResourceBundleEntry(ResourceBundleEntry entry) {
 
-        HttpURLConnection connection = server.buildConnection(uri);
+        String uri = "l10n/bundle/"+entry.getBundle()+"/resource/"+entry.getKey();
 
-        try {
+        HttpURLConnection connection = server.buildPutConnection(uri);
 
-            String resultsJson =  ConnectionUtils.connectAndGetResponse(connection);
-            JSONObject json = new JSONObject(resultsJson);
-            JSONObject jsonObject = json.getJSONArray(BUNDLES).getJSONObject(0);
-
-            return ResourceBundleParser.parseBundle(jsonObject.toString());
-
-        } catch (IOException e) {
-            throw  new RuntimeException(e);
-        }
+        doBundleChange(entry, connection);
     }
 
+    public void insertResourceBundleEntry(ResourceBundleEntry entry) {
+
+        String uri = "l10n/bundle/"+entry.getBundle()+"/resource/"+entry.getKey();
+
+        HttpURLConnection connection = server.buildPostConnection(uri);
+
+        doBundleChange(entry, connection);
+    }
+
+    private void doBundleChange(ResourceBundleEntry entry, HttpURLConnection connection) {
+        try {
+            String jsonText = ResourceBundleParser.entryToJson(entry);
+            connection.getOutputStream().write(jsonText.getBytes("UTF8"));
+            ConnectionUtils.connectAndGetResponse(connection);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 }

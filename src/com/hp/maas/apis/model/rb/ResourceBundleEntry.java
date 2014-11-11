@@ -12,12 +12,18 @@ import java.util.Set;
  */
 public class ResourceBundleEntry {
 
+    private String bundle;
     private String key;
     private Map<String,String> valuesMap;
 
-    public ResourceBundleEntry(String key, Map<String, String> valuesMap) {
+    public ResourceBundleEntry(String bundle,String key, Map<String, String> valuesMap) {
         this.key = key;
         this.valuesMap = valuesMap;
+        this.bundle = bundle;
+    }
+
+    public String getBundle() {
+        return bundle;
     }
 
     public String getKey() {
