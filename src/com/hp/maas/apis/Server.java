@@ -32,6 +32,7 @@ public class Server {
     private EntityWriterAPI  entityWriterAPI;
     private RMSReaderAPI rmsReaderAPI;
     private RMSWriterAPI rmsWriterAPI;
+    private ResourceBundleAPI resourceBundleAPI;
 
     public Server(String hostUrl, String name, String password, String tenant) {
         this.hostUrl = hostUrl;
@@ -63,6 +64,7 @@ public class Server {
         entityWriterAPI = new EntityWriterAPI(this);
         rmsReaderAPI = new RMSReaderAPI(this);
         rmsWriterAPI = new RMSWriterAPI(this);
+        resourceBundleAPI = new ResourceBundleAPI(this);
 
         Log.log("Auth Token: "+ token);
 
@@ -142,5 +144,9 @@ public class Server {
 
     public RMSWriterAPI getRmsWriterAPI() {
         return rmsWriterAPI;
+    }
+
+    public ResourceBundleAPI getResourceBundleAPI() {
+        return resourceBundleAPI;
     }
 }
