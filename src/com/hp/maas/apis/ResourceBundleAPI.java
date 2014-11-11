@@ -1,5 +1,6 @@
 package com.hp.maas.apis;
 
+import com.hp.maas.apis.model.rb.ResourceBundle;
 import com.hp.maas.apis.model.rb.ResourceBundleEntry;
 import com.hp.maas.apis.model.rb.ResourceBundleParser;
 import com.hp.maas.apis.model.rms.RMSInstance;
@@ -23,6 +24,7 @@ public class ResourceBundleAPI {
 
     public static final String LOCALES = "Locales";
     public static final String VALUES = "Values";
+    public static final String BUNDLES = "Bundles";
     private Server server;
 
     private List<String> supportedLocales;
@@ -75,7 +77,6 @@ public class ResourceBundleAPI {
         HttpURLConnection connection = server.buildConnection(uri);
 
         try {
-            List<String> results = new ArrayList<String>();
 
             String resultsJson =  ConnectionUtils.connectAndGetResponse(connection);
 
@@ -83,9 +84,28 @@ public class ResourceBundleAPI {
             return ResourceBundleParser.parseEntry(resultsJson);
 
         } catch (IOException e) {
+            return null;
+        }
+    }
+
+    public ResourceBundle getResourceBundle(String bundle, String locale) {
+        String uri = "l10n/bundles?bundleLocale="+locale+"&bundleNames="+bundle;
+
+        HttpURLConnection connection = server.buildConnection(uri);
+
+        try {
+
+            String resultsJson =  ConnectionUtils.connectAndGetResponse(connection);
+            JSONObject json = new JSONObject(resultsJson);
+            JSONObject jsonObject = json.getJSONArray(BUNDLES).getJSONObject(0);
+
+            return ResourceBundleParser.parseBundle(jsonObject.toString());
+
+        } catch (IOException e) {
             throw  new RuntimeException(e);
         }
     }
+
 
 
 }

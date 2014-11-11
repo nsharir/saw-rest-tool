@@ -25,4 +25,12 @@ public class ResourceBundle {
     public Map<String, ResourceBundleEntry> getEntries() {
         return values;
     }
+
+    @Override
+    public String toString() {
+        return "ResourceBundle{" +
+                "name='" + name + '\'' +
+                ", values=" + values +
+                '}';
+    }
 }

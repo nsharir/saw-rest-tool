@@ -27,10 +27,29 @@ public class ResourceBundleParser {
         Set set = translations.keySet();
         for (Object key : set) {
             String keyStr = (String) key;
-            map.put(keyStr,translations.getString(keyStr));
+            map.put(keyStr, translations.getString(keyStr));
         }
 
 
         return new ResourceBundleEntry(json.getString(KEY),map);
+    }
+
+    public static ResourceBundle parseBundle(String resultsJson) {
+        JSONObject json = new JSONObject(resultsJson);
+        String name = json.getString("Name");
+        String locale = json.getString("Locale");
+        JSONObject resources = json.getJSONObject("Resources");
+        Map<String, String > map;
+        Map<String, ResourceBundleEntry> entriesMap = new HashMap<String, ResourceBundleEntry>();
+
+        Set set = resources.keySet();
+        for (Object key : set) {
+            String keyStr = (String) key;
+            map = new HashMap<String, String>();
+            map.put(locale,resources.getString(keyStr));
+
+            entriesMap.put(keyStr, new ResourceBundleEntry(keyStr,map));
+        }
+        return new ResourceBundle(name, entriesMap);
     }
 }
