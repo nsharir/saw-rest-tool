@@ -83,7 +83,10 @@ public class FormsValidationFinder {
                 }
 
                 if (section.getDomain() == null){
-                    errors.add("["+(section.getHeader() != null ? section.getHeader(): section.getName())+"] section has no [domain] property." );
+                    //we only allow empty domain for customization keys
+                    if (!(section.getResourceKey() != null && section.getResourceKey().contains("customization"))) {
+                        errors.add("[" + (section.getHeader() != null ? section.getHeader() : section.getName()) + "] section has no [domain] property.");
+                    }
                 }
 
                 for (FormField field : section.getFields()) {
@@ -116,7 +119,7 @@ public class FormsValidationFinder {
             //report("  Form ["+form.getName()+"]" +" [entityType="+form.getEntityType()+"] was verified successfully." );
         }
         else{
-            reportError("Form ["+form.getName()+"]" +" [entityType="+form.getEntityType() + "] failed on some validations (" + errors.size() + "):");
+            reportError("Form ["+form.getName()+"]" +" [entityType="+form.getEntityType() + "] failed on some validations (" + errors.size() + " failures ):");
             for (String error : errors) {
                 reportError("    - "+error);
             }

@@ -1,18 +1,18 @@
 {"completionStatus": "OK", "results": [
     {
-        "id": "52c95a390cf23c1ed82515dc",
-        "name": "new",
-        "entityType": "WorkHours",
+        "id": "52c95a3c0cf23c1ed8251612",
+        "name": "full",
+        "entityType": "WorkSchedule",
         "sections": [
             {
                 "header": "Details",
                 "isOpen": true,
                 "fields": [
                     {
-                        "editorType": "DropDownList",
+                        "editorType": "TextBox",
                         "labelSize": 2.0,
                         "size": 4.0,
-                        "modelAttribute": "Day",
+                        "modelAttribute": "Name",
                         "newLine": false
                     },
                     {
@@ -21,20 +21,41 @@
                         "size": 8.0,
                         "modelAttribute": "Description",
                         "newLine": false
-                    },
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "52c95a3f0cf23c1ed8251679",
+        "name": "new",
+        "entityType": "WorkSchedule",
+        "sections": [
+            {
+                "header": "Details",
+                "name": "Details",
+                "domain": "saw",
+                "resourceKey": "detailSection",
+                "isOpen": true,
+                "isHide": false,
+                "fields": [
                     {
                         "editorType": "TextBox",
                         "labelSize": 2.0,
                         "size": 4.0,
-                        "modelAttribute": "StartTime",
-                        "newLine": false
+                        "modelAttribute": "Name",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "readOnly": false
                     },
                     {
-                        "editorType": "TextBox",
+                        "editorType": "TextArea",
                         "labelSize": 2.0,
-                        "size": 4.0,
-                        "modelAttribute": "EndTime",
-                        "newLine": false
+                        "size": 8.0,
+                        "modelAttribute": "Description",
+                        "newLine": false,
+                        "isOpposite": false,
+                        "readOnly": false
                     }
                 ]
             }
