@@ -19,9 +19,11 @@ public class MetadataParser {
 
     private static final String TYPE_NAME = "name";
     private static final String TYPE_PROPERTY_DESCRIPTORS = "property_descriptors";
+    private static final String TYPE_RELATIONS_DESCRIPTORS = "relation_descriptors";
 
     private static final String FIELD_NAME = "name";
     private static final String FIELD_LOGICAL_TYPE = "logical_type";
+    private static final String HIDDEN = "hidden";
     private static final String RELATION_DESCRIPTOR = "relation_descriptor";
     private static final String SECOND_ENDPOINT_ENTITY_NAME = "second_endpoint_entity_name";
 
@@ -29,6 +31,7 @@ public class MetadataParser {
         JSONObject jsonObj = new JSONObject(jsonStr);
 
         String typeName = jsonObj.getString(TYPE_NAME);
+
         JSONArray propDescriptors = jsonObj.getJSONArray(TYPE_PROPERTY_DESCRIPTORS);
 
         List<FieldDescriptor> fields = new ArrayList<FieldDescriptor>();
@@ -38,14 +41,27 @@ public class MetadataParser {
             JSONObject prop = propDescriptors.getJSONObject(i);
             String name = prop.getString(FIELD_NAME);
             String logicalType = prop.getString(FIELD_LOGICAL_TYPE);
+            Boolean isHidden = prop.getBoolean(HIDDEN);
             EntityReferenceDescriptor referenceDescriptor = createReferenceDescriptor(prop, typeName);
 
 
-            FieldDescriptor fieldDescriptor = new FieldDescriptor(name, logicalType,referenceDescriptor);
+            FieldDescriptor fieldDescriptor = new FieldDescriptor(name, logicalType,isHidden,referenceDescriptor);
             fields.add(fieldDescriptor);
         }
 
-        return new EntityTypeDescriptor(typeName,fields);
+
+        JSONArray relationsDescriptors = jsonObj.getJSONArray(TYPE_RELATIONS_DESCRIPTORS);
+
+        List<RelationDescriptor> relations = new ArrayList<RelationDescriptor>();
+
+        for (int i=0; i< relationsDescriptors.length();i++){
+
+            JSONObject prop = relationsDescriptors.getJSONObject(i);
+            relations.add(new RelationDescriptor(prop.getString("name"),prop.getString("cardinality")));
+        }
+
+
+        return new EntityTypeDescriptor(typeName,fields,relations);
     }
 
     private static  EntityReferenceDescriptor createReferenceDescriptor(JSONObject property, String type){

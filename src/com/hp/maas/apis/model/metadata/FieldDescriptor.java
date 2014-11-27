@@ -11,11 +11,13 @@ public class FieldDescriptor {
 
     private String name;
     private String logicalType;
+    private boolean isHidden;
     private EntityReferenceDescriptor reference;
 
-    FieldDescriptor(String name, String logicalType, EntityReferenceDescriptor reference) {
+    FieldDescriptor(String name, String logicalType,boolean isHidden, EntityReferenceDescriptor reference) {
         this.name = name;
         this.logicalType = logicalType;
+        this.isHidden = isHidden;
         this.reference = reference;
     }
 
@@ -35,12 +37,16 @@ public class FieldDescriptor {
         return logicalType;
     }
 
-    @Override
-    public String toString() {
-        return "{"+name + ","+logicalType+"}";
+    public boolean isHidden() {
+        return isHidden;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "FieldDescriptor{" +
+                "isHidden=" + isHidden +
+                ", logicalType='" + logicalType + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

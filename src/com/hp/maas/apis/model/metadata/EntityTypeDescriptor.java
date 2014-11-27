@@ -17,15 +17,23 @@ public class EntityTypeDescriptor {
     private String name;
     private List<FieldDescriptor> fields;
     private Map<String,FieldDescriptor> fieldMap;
+    private List<RelationDescriptor> relations;
+    private Map<String,RelationDescriptor> relationsMap;
     private String identificationFieldName;
 
-    EntityTypeDescriptor(String name, List<FieldDescriptor> fields){
+    EntityTypeDescriptor(String name, List<FieldDescriptor> fields , List<RelationDescriptor> relations){
         this.name = name;
         this.identificationFieldName = identificationFieldName;
         this.fields = new ArrayList<FieldDescriptor>(fields);
         fieldMap = new HashMap<String, FieldDescriptor>();
         for (FieldDescriptor field : fields) {
             fieldMap.put(field.getName(), field);
+        }
+
+        this.relations = new ArrayList<RelationDescriptor>(relations);
+        relationsMap = new HashMap<String, RelationDescriptor>();
+        for (RelationDescriptor relation : relations) {
+            relationsMap.put(relation.getName(), relation);
         }
     }
 
@@ -37,16 +45,22 @@ public class EntityTypeDescriptor {
         return fieldMap.get(fieldName);
     }
 
+    public List<RelationDescriptor> getRelations() {
+        return relations;
+    }
 
+    public RelationDescriptor getRelation(String relationName){
+        return relationsMap.get(relationName);
+    }
 
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append("{Type: ").append(name).append(", Fields: [");
-        for (FieldDescriptor field : fields) {
-            str.append(field);
-        }
-        str.append("]}");
-        return str.toString();
+        return "EntityTypeDescriptor{" +
+                "name='" + name + '\'' +
+                ", fields=" + fields +
+                ", fieldMap=" + fieldMap +
+                ", relations=" + relations +
+                ", relationsMap=" + relationsMap +
+                '}';
     }
 }

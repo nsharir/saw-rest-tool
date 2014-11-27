@@ -1,0 +1,43 @@
+{"completionStatus": "OK", "results": [
+    {
+        "id": "52c95a390cf23c1ed82515dc",
+        "name": "new",
+        "entityType": "WorkHours",
+        "sections": [
+            {
+                "header": "Details",
+                "isOpen": true,
+                "fields": [
+                    {
+                        "editorType": "DropDownList",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "Day",
+                        "newLine": false
+                    },
+                    {
+                        "editorType": "TextArea",
+                        "labelSize": 2.0,
+                        "size": 8.0,
+                        "modelAttribute": "Description",
+                        "newLine": false
+                    },
+                    {
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "StartTime",
+                        "newLine": false
+                    },
+                    {
+                        "editorType": "TextBox",
+                        "labelSize": 2.0,
+                        "size": 4.0,
+                        "modelAttribute": "EndTime",
+                        "newLine": false
+                    }
+                ]
+            }
+        ]
+    }
+], "totalCount": 0}

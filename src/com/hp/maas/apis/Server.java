@@ -149,4 +149,8 @@ public class Server {
     public ResourceBundleAPI getResourceBundleAPI() {
         return resourceBundleAPI;
     }
+
+    public String getTenantId() {
+        return tenant;
+    }
 }
