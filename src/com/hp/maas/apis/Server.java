@@ -41,9 +41,29 @@ public class Server {
         this.tenant = tenant;
     }
 
+    public Server(String hostUrl, String tenant, String token) {
+        this.hostUrl = hostUrl;
+        this.tenant = tenant;
+        this.token = token;
+    }
+
     public void authenticate(){
+        if (token == null) {
+           authenticateByCredentials();
+        }
 
+        metadataAPI = new MetadataAPI(this);
+        entityReaderAPI = new EntityReaderAPI(this );
+        entityWriterAPI = new EntityWriterAPI(this);
+        rmsReaderAPI = new RMSReaderAPI(this);
+        rmsWriterAPI = new RMSWriterAPI(this);
+        resourceBundleAPI = new ResourceBundleAPI(this);
 
+        Log.log("Auth Token: "+ token);
+
+    }
+
+    private void authenticateByCredentials() {
         try {
             URL url = new URL(hostUrl+AUTH_URL+"?login="+name+"&password="+password);
 
@@ -58,18 +78,7 @@ public class Server {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
-        metadataAPI = new MetadataAPI(this);
-        entityReaderAPI = new EntityReaderAPI(this );
-        entityWriterAPI = new EntityWriterAPI(this);
-        rmsReaderAPI = new RMSReaderAPI(this);
-        rmsWriterAPI = new RMSWriterAPI(this);
-        resourceBundleAPI = new ResourceBundleAPI(this);
-
-        Log.log("Auth Token: "+ token);
-
     }
-
 
 
     public HttpURLConnection buildPostConnection(String uri){

@@ -13,6 +13,15 @@ public class Form {
     private String name;
     private String entityType;
     private List<FormSection> sections;
+    private JSONObject originalFormJson;
+
+    public JSONObject getOriginalFormJson() {
+        return originalFormJson;
+    }
+
+    public void setOriginalFormJson(JSONObject originalFormJson) {
+        this.originalFormJson = originalFormJson;
+    }
 
     public String getId() {
         return id;

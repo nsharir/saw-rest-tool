@@ -61,6 +61,7 @@ public class FormParser {
         try {
             GracefulJson json = new GracefulJson(jsonOriginal);
 
+            form.setOriginalFormJson(jsonOriginal);
             form.setId(json.getString(FormConst.FORM.ID));
             form.setName(json.getString(FormConst.FORM.NAME));
             form.setEntityType(json.getString(FormConst.FORM.ENTITY_TYPE));
