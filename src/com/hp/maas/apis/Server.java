@@ -33,6 +33,7 @@ public class Server {
     private RMSReaderAPI rmsReaderAPI;
     private RMSWriterAPI rmsWriterAPI;
     private ResourceBundleAPI resourceBundleAPI;
+    private TenantManagementAPI tenantManagementAPI;
 
     public Server(String hostUrl, String name, String password, String tenant) {
         this.hostUrl = hostUrl;
@@ -58,6 +59,7 @@ public class Server {
         rmsReaderAPI = new RMSReaderAPI(this);
         rmsWriterAPI = new RMSWriterAPI(this);
         resourceBundleAPI = new ResourceBundleAPI(this);
+        tenantManagementAPI = new TenantManagementAPI(this);
 
         Log.log("Auth Token: "+ token);
 
@@ -157,6 +159,10 @@ public class Server {
 
     public ResourceBundleAPI getResourceBundleAPI() {
         return resourceBundleAPI;
+    }
+
+    public TenantManagementAPI getTenantManagementAPI() {
+        return tenantManagementAPI;
     }
 
     public String getTenantId() {
