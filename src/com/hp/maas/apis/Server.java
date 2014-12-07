@@ -65,6 +65,10 @@ public class Server {
 
     }
 
+    public String getToken() {
+        return token;
+    }
+
     private void authenticateByCredentials() {
         try {
             URL url = new URL(hostUrl+AUTH_URL+"?login="+name+"&password="+password);

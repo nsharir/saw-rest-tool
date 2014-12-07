@@ -53,6 +53,11 @@ public class EntityTypeDescriptor {
         return relationsMap.get(relationName);
     }
 
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return "EntityTypeDescriptor{" +

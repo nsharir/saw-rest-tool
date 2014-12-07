@@ -3,6 +3,8 @@ package com.hp.maas.apis;
 import com.hp.maas.apis.model.metadata.EntityTypeDescriptor;
 import com.hp.maas.apis.model.metadata.MetadataParser;
 import com.hp.maas.utils.ConnectionUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
 import java.util.HashMap;
@@ -31,6 +33,24 @@ public class MetadataAPI {
          try {
              String json = ConnectionUtils.connectAndGetResponse(connection);
              return MetadataParser.createEntityTypeDescriptor(json);
+         } catch (Exception e) {
+             throw  new RuntimeException(e);
+         }
+
+    }
+
+    public void loadAllFromServer() {
+         HttpURLConnection connection = server.buildConnection("metadata/ui/entity-descriptors/");
+
+         try {
+             String json = ConnectionUtils.connectAndGetResponse(connection);
+             JSONArray all = new JSONObject(json).getJSONArray("entity_descriptors");
+
+             for (int i=0; i<all.length();i++){
+                 EntityTypeDescriptor descriptor = MetadataParser.createEntityTypeDescriptor(all.getJSONObject(i).toString());
+                 metaData.put(descriptor.getName(),descriptor);
+             }
+
          } catch (Exception e) {
              throw  new RuntimeException(e);
          }

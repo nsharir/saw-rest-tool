@@ -4,6 +4,7 @@ import com.hp.maas.apis.Server;
 import com.hp.maas.apis.model.metadata.EntityTypeDescriptor;
 import com.hp.maas.apis.model.metadata.FieldDescriptor;
 import com.hp.maas.apis.model.rms.RMSInstance;
+import com.hp.maas.apis.model.tenatManagment.Tenant;
 import com.hp.maas.jsons.forms.Form;
 import com.hp.maas.jsons.forms.FormField;
 import com.hp.maas.jsons.forms.FormParser;
@@ -25,42 +26,23 @@ public class FormsValidationFinder {
 
     String serverUrl;
     String ssoToken;
-    Map<String,String> tenantsMap;
+
     File outputFolder;
     File globalLog;
     File tenantDir;
     File tenantLog = null;
 
-    public FormsValidationFinder() {
-        init();
+    List<Tenant> tenants;
+
+    public FormsValidationFinder(String serverUrl, String ssoToken, String outputFolderPath , String operatorTenantId) {
+        this.serverUrl = serverUrl;
+        this.ssoToken = ssoToken;
+        init(outputFolderPath,operatorTenantId);
     }
 
-    private void init() {
-        String path = System.getProperty("forms-validation-conf-path");
-        if (path == null || "".equals(path)){
-            throw new RuntimeException("Please define the path to the configuration file. (forms-validation-conf-path)");
-        }
 
-        File confFile = new File(path);
+    private void init(String outputFolderPath,String operatorTenantId) {
 
-        if (!confFile.exists()){
-            throw new RuntimeException("No such file "+path);
-        }
-        String confString;
-
-        try {
-            confString = FileUtils.readFileToString(confFile);
-        } catch (IOException e) {
-            throw new RuntimeException("Error reading file "+path,e);
-        }
-
-        JSONObject conf = new JSONObject(confString);
-
-
-
-        serverUrl = conf.getString("serverUrl");
-        ssoToken = conf.getString("ssoToken");
-        String outputFolderPath = conf.getString("outputFolder");
         outputFolder = new File(outputFolderPath);
         if (!outputFolder.exists()){
             throw new RuntimeException("No such output path "+outputFolderPath);
@@ -74,43 +56,61 @@ public class FormsValidationFinder {
 
         globalLog = new File(outputFolder.getAbsolutePath()+File.separator+"All.log");
 
-        JSONArray tenants = conf.getJSONArray("tenants");
+
+        createTenantList(operatorTenantId);
+
+    }
+
+    private void createTenantList(String operatorTenantId) {
+
+        Server server = new Server(serverUrl, operatorTenantId,ssoToken);
+        server.authenticate();
 
 
-        tenantsMap = new HashMap<String, String>();
+        List<Tenant> allTenants = server.getTenantManagementAPI().getAllTenants();
 
-        for (int i=0;i<tenants.length();i++){
-            JSONObject tenantObj = tenants.getJSONObject(i);
-            tenantsMap.put(tenantObj.getString("tenantId"),tenantObj.getString("tenantName"));
+        tenants = new ArrayList<Tenant>();
+
+        for (Tenant t : allTenants) {
+            if (!t.getId().equals(operatorTenantId) && "Active".equals(t.getState())) {
+                tenants.add(t);
+            }
         }
-
     }
 
     public void run(){
         reportGlobal("Configuration: ");
         reportGlobal("{" +
                 "serverUrl='" + serverUrl + '\n' +
-                ", ssoToken='" + ssoToken + '\n' +
                 ", outputFolder='" + outputFolder + '\n' +
-                ", tenantsMap=" + tenantsMap +
+                ", tenants=" + tenants.size() +
                 "}\n");
+        reportGlobal("------------------------------------------------------------------------------");
 
-        for (Map.Entry<String, String> tenant : tenantsMap.entrySet()) {
-            runTenant(tenant.getKey(),tenant.getValue());
+        for (Tenant t : tenants) {
+            try {
+                runTenant(t);
+            }catch(Throwable e){
+                reportGlobal("Error while validating tenant "+t);
+                System.out.println(e);
+            }
+            reportGlobal("------------------------------------------------------------------------------");
         }
     }
 
 
-    private void runTenant(String id, String name){
+    private void runTenant(Tenant tenant){
 
-        reportGlobal("** Validating tenant " + id + " (" + name + ")...");
+        reportGlobal("** Validating tenant " +tenant);
         long time = System.currentTimeMillis();
 
-        tenantDir = new File(outputFolder.getAbsolutePath()+File.separator+id);
+        tenantDir = new File(outputFolder.getAbsolutePath()+File.separator+tenant.getId());
         tenantLog = null;
 
-        Server server = new Server(serverUrl, id,ssoToken);
+        Server server = new Server(serverUrl, tenant.getId(),ssoToken);
         server.authenticate();
+
+        server.getMetadataAPI().loadAllFromServer();
 
         List<RMSInstance> rmsInstances = server.getRmsReaderAPI().readResources("formLayout");
 
