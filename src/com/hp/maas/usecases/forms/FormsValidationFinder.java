@@ -10,8 +10,6 @@ import com.hp.maas.jsons.forms.FormField;
 import com.hp.maas.jsons.forms.FormParser;
 import com.hp.maas.jsons.forms.FormSection;
 import org.apache.commons.io.FileUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,15 +31,17 @@ public class FormsValidationFinder {
     File tenantLog = null;
 
     List<Tenant> tenants;
+    private boolean simulationMode;
 
-    public FormsValidationFinder(String serverUrl, String ssoToken, String outputFolderPath , String operatorTenantId) {
+    public FormsValidationFinder(String serverUrl, String ssoToken, String outputFolderPath , String operatorTenantId , List<String> tenantsFilter) {
         this.serverUrl = serverUrl;
         this.ssoToken = ssoToken;
-        init(outputFolderPath,operatorTenantId);
+        this.simulationMode = simulationMode;
+        init(outputFolderPath,operatorTenantId,tenantsFilter);
     }
 
 
-    private void init(String outputFolderPath,String operatorTenantId) {
+    private void init(String outputFolderPath, String operatorTenantId, List<String> tenantsFilter) {
 
         outputFolder = new File(outputFolderPath);
         if (!outputFolder.exists()){
@@ -57,11 +57,11 @@ public class FormsValidationFinder {
         globalLog = new File(outputFolder.getAbsolutePath()+File.separator+"All.log");
 
 
-        createTenantList(operatorTenantId);
+        createTenantList(operatorTenantId,tenantsFilter);
 
     }
 
-    private void createTenantList(String operatorTenantId) {
+    private void createTenantList(String operatorTenantId, List<String> tenantsFilter) {
 
         Server server = new Server(serverUrl, operatorTenantId,ssoToken);
         server.authenticate();
@@ -73,12 +73,22 @@ public class FormsValidationFinder {
 
         for (Tenant t : allTenants) {
             if (!t.getId().equals(operatorTenantId) && "Active".equals(t.getState())) {
+                if (tenantsFilter == null || tenantsFilter.contains(t.getId()))
                 tenants.add(t);
             }
         }
     }
 
     public void run(){
+        run(false);
+    }
+
+    public void simulate(){
+        run(true);
+    }
+
+    private void run(boolean simulationMode){
+        this.simulationMode = simulationMode;
         reportGlobal("Configuration: ");
         reportGlobal("{" +
                 "serverUrl='" + serverUrl + '\n' +
@@ -92,6 +102,7 @@ public class FormsValidationFinder {
                 runTenant(t);
             }catch(Throwable e){
                 reportGlobal("Error while validating tenant "+t);
+                e.printStackTrace();
                 System.out.println(e);
             }
             reportGlobal("------------------------------------------------------------------------------");
@@ -124,16 +135,18 @@ public class FormsValidationFinder {
             forms.add(FormParser.toForm(rmsInstance.getContent()));
         }
 
-        int invalid = 0;
+        Map<Form,List<FormError>> errorsMap = new HashMap<Form, List<FormError>>();
 
         for (Form form : forms) {
-            boolean b = validateForm(server,form,log);
-            if (!b){
-                invalid++;
+            List<FormError> formErrors = validateForm(server, form, log);
+            if (!formErrors.isEmpty()) {
+                errorsMap.put(form, formErrors);
             }
         }
 
         long elapsed =  System.currentTimeMillis() - time;
+
+        int invalid = errorsMap.keySet().size();
 
         if (invalid == 0) {
             reportGlobal("** Done validating tenant " + server.getTenantId() + " - all " + forms.size() + " forms are valid. ("+elapsed+"ms )");
@@ -142,13 +155,33 @@ public class FormsValidationFinder {
             report(log);
             reportGlobal(msg);
             report(msg);
+
+            reportGlobal("** Fixing tenant... " + server.getTenantId());
+            report("** Fixing tenant... " + server.getTenantId());
+
+            for (Form form : errorsMap.keySet()) {
+                List<FormError> formErrors = errorsMap.get(form);
+
+                FormsTransaction tx = new FormsRealTransaction(server, tenantDir,simulationMode) ;
+
+                for (FormError error : formErrors) {
+                    error.fix(tx);
+                    String fixMsg = error.getFixMessage() ;
+                    reportGlobal(fixMsg);
+                    report(fixMsg);
+                }
+
+                tx.commit();
+            }
         }
+
+
 
     }
 
-    private boolean validateForm(Server server,Form form , List<String> log) {
+    private List<FormError> validateForm(Server server,Form form , List<String> log) {
 
-        List<String> errors = new ArrayList<String>();
+        List<FormError> errors = new ArrayList<FormError>();
 
         EntityTypeDescriptor descriptor = null;
 
@@ -159,7 +192,7 @@ public class FormsValidationFinder {
         }
 
         if (descriptor == null){
-            errors.add("["+form.getEntityType()+"] is not a valid entity type");
+            errors.add(new InvalidEntityTypeFormError(form));
         }else {
 
             for (FormSection section : form.getSections()) {
@@ -183,14 +216,7 @@ public class FormsValidationFinder {
                 }
 
                 if (badHeader){
-                    String details = "{" +
-                            "name='" + section.getName() + '\'' +
-                            ", header='" + section.getHeader() + '\'' +
-                            ", resourceKey='" + section.getResourceKey() + '\'' +
-                            ", domain='" + section.getDomain() + '\''+
-                            "}";
-
-                    errors.add("BAD_HEADER: " +" [entityType=" + form.getEntityType() + "]"+"[form=" + form.getName() + "][section=" + (section.getHeader() != null ? section.getHeader() : section.getName()) + "] section has a bad header. "+details);
+                    errors.add(new InvalidSectionHeaderFormError(form, section));
                 }
 
                 for (FormField field : section.getFields()) {
@@ -201,19 +227,19 @@ public class FormsValidationFinder {
                     FieldDescriptor md = descriptor.getField(field.getModelAttribute());
                     if (md == null) {
                         if (descriptor.getRelation(field.getModelAttribute()) == null) {
-                            errors.add("MISSING_IN_MD: "+" [entityType=" + form.getEntityType() + "]"+"[form=" + form.getName() + "][field" + field.getModelAttribute() + "] doesn't exist in metadata of entity type " + form.getEntityType() + " (section = " + section.getName() + ")");
+                            errors.add(new InvalidFieldFormError(form, section, field, "INVALID MD"));
                             badField.add(field.getModelAttribute());
                         }
                     }else{
                         if (md.isHidden()){
-                            errors.add("HIDDEN_FIELD: "+" [entityType=" + form.getEntityType() + "]"+"[form=" + form.getName() + "][field=" + field.getModelAttribute() + "] is define as hidden field in entity type " + form.getEntityType() + " (section = " + section.getName() + ")");
+                            errors.add(new InvalidFieldFormError(form, section, field, "HIDDEN FIELD"));
                             badField.add(field.getModelAttribute());
                         }
                     }
                 }
 
                 if (section.getFields().isEmpty() || ((section.getFields().size() - badField.size()) == 0)) {
-                    errors.add("NO_SECTION: "+" [entityType=" + form.getEntityType() + "]"+"[form=" + form.getName() + "][section="+section.getName()+"] Section has no fields (or all of his fields are invalid)");
+                    errors.add(new InvalidSectionFormError(form, section));
                 }
 
 
@@ -221,18 +247,19 @@ public class FormsValidationFinder {
         }
 
 
-        if (errors.isEmpty()){
-            //log.add(" Form [" + form.getName() + "]" + " [entityType=" + form.getEntityType() + "] was verified successfully.");
-            //storeForm(form);
-        }
-        else {
+        if (!errors.isEmpty()){
             //log.add("ERROR: Form [" + form.getName() + "]" + " [entityType=" + form.getEntityType() + "] failed on some validations (" + errors.size() + " failures ):");
-            log.addAll(errors);
+            List<String> errStrings = new ArrayList<String>();
+
+            for (FormError error : errors) {
+                errStrings.add(error.getErrorMessage());
+            }
+            log.addAll(errStrings);
             storeForm(form);
         }
 
 
-        return errors.isEmpty();
+        return errors;
 
     }
 

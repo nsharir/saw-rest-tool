@@ -54,7 +54,16 @@ public class FormParser {
             }
             return null;
         }
+
+        public void put(String key, String value){
+            if (org.keySet().contains(key) && value == null){
+               org.remove(key);
+            }else{
+                org.put(key, value);
+            }
+        }
     }
+
     public static Form toForm(JSONObject jsonOriginal) {
         Form form = new Form();
 
@@ -118,6 +127,126 @@ public class FormParser {
         }
 
         return form;
+    }
+
+
+    public static void removeField(JSONObject jsonOriginal , String modelAttribute){
+        try {
+            GracefulJson json = new GracefulJson(jsonOriginal);
+
+
+            JSONArray jsonSections = json.getJSONArray(FormConst.FORM.SECTIONS);
+
+            for (int i = 0; i < jsonSections.length(); i++) {
+                GracefulJson jsonSection = new GracefulJson(jsonSections.getJSONObject(i));
+
+                JSONArray jsonFields = jsonSection.getJSONArray(FormConst.SECTION.FIELDS);
+
+                Integer toRemove = null;
+
+                for (int j = 0; j < jsonFields.length(); j++) {
+                    GracefulJson jsonField = new GracefulJson(jsonFields.getJSONObject(j));
+
+                    String att = jsonField.getString(FormConst.FIELD.MODEL_ATTRIBUTE);
+
+                    if (modelAttribute.equals(att)){
+                        toRemove = j;
+                        break;
+                    }
+                }
+
+                if (toRemove != null){
+                    jsonFields.remove(toRemove);
+                }
+
+            }
+
+        } catch (RuntimeException e) {
+            Log.error("Error parsing form: \n" + jsonOriginal.toString(1));
+            throw e;
+        }
+    }
+
+    public static void removeSection(JSONObject jsonOriginal , FormSection sectionToRemove){
+        try {
+            GracefulJson json = new GracefulJson(jsonOriginal);
+
+
+            JSONArray jsonSections = json.getJSONArray(FormConst.FORM.SECTIONS);
+
+            Integer toRemove = null;
+
+            for (int i = 0; i < jsonSections.length(); i++) {
+                GracefulJson jsonSection = new GracefulJson(jsonSections.getJSONObject(i));
+
+                FormSection section = new FormSection();
+
+                section.setName(jsonSection.getString(FormConst.SECTION.NAME));
+                section.setHeader(jsonSection.getString(FormConst.SECTION.HEADER));
+                section.setDomain(jsonSection.getString(FormConst.SECTION.DOMAIN));
+                section.setResourceKey(jsonSection.getString(FormConst.SECTION.RESOURCE_KEY));
+                section.setLocalized_label(jsonSection.getString(FormConst.SECTION.LOCALIZED_LABEL));
+                section.setIsHide(jsonSection.getBoolean(FormConst.SECTION.IS_HIDE));
+                section.setIsOpen(jsonSection.getBoolean(FormConst.SECTION.IS_OPEN));
+
+                if (sectionToRemove.equals(section)){
+                    toRemove = i;
+                }
+
+            }
+
+            if (toRemove != null){
+                jsonSections.remove(toRemove);
+            }
+
+
+
+        } catch (RuntimeException e) {
+            Log.error("Error parsing form: \n" + jsonOriginal.toString(1));
+            throw e;
+        }
+    }
+
+    public static void updateLabelsSection(JSONObject jsonOriginal, FormSection sectionDetails, String resourceKey, String name) {
+        try {
+            GracefulJson json = new GracefulJson(jsonOriginal);
+
+
+            JSONArray jsonSections = json.getJSONArray(FormConst.FORM.SECTIONS);
+
+
+            for (int i = 0; i < jsonSections.length(); i++) {
+                GracefulJson jsonSection = new GracefulJson(jsonSections.getJSONObject(i));
+
+                FormSection section = new FormSection();
+
+                section.setName(jsonSection.getString(FormConst.SECTION.NAME));
+                section.setHeader(jsonSection.getString(FormConst.SECTION.HEADER));
+                section.setDomain(jsonSection.getString(FormConst.SECTION.DOMAIN));
+                section.setResourceKey(jsonSection.getString(FormConst.SECTION.RESOURCE_KEY));
+                section.setLocalized_label(jsonSection.getString(FormConst.SECTION.LOCALIZED_LABEL));
+                section.setIsHide(jsonSection.getBoolean(FormConst.SECTION.IS_HIDE));
+                section.setIsOpen(jsonSection.getBoolean(FormConst.SECTION.IS_OPEN));
+
+                if (sectionDetails.equals(section)){
+
+
+                    jsonSection.put(FormConst.SECTION.HEADER,null);
+                    jsonSection.put(FormConst.SECTION.DOMAIN,null);
+                    jsonSection.put(FormConst.SECTION.LOCALIZED_LABEL,null);
+                    jsonSection.put(FormConst.SECTION.NAME,name);
+                    jsonSection.put(FormConst.SECTION.RESOURCE_KEY,resourceKey);
+
+                    break;
+                }
+
+            }
+
+
+        } catch (RuntimeException e) {
+            Log.error("Error parsing form: \n" + jsonOriginal.toString(1));
+            throw e;
+        }
     }
 
 }

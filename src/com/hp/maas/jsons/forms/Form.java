@@ -55,6 +55,19 @@ public class Form {
         this.sections = sections;
     }
 
+    public void removeField(FormSection section, FormField field) {
+        FormParser.removeField(originalFormJson, field.getModelAttribute());
+        section.removeField(field);
+        if (section.getFields().isEmpty()){
+            removeSection(section);
+        }
+    }
+
+    public void removeSection(FormSection section) {
+        sections.remove(section);
+        FormParser.removeSection(originalFormJson, section);
+    }
+
     @Override
     public String toString() {
         return "Form{" +
@@ -63,5 +76,15 @@ public class Form {
                 ", entityType='" + entityType + '\'' +
                 ", sections=" + sections +
                 '}';
+    }
+
+
+    public void updateSectionLabels(FormSection section, String resourceKey, String name) {
+        FormParser.updateLabelsSection(originalFormJson, section,resourceKey,name);
+        section.setResourceKey(resourceKey);
+        section.setLocalized_label(null);
+        section.setName(name);
+        section.setHeader(null);
+        section.setDomain(null);
     }
 }

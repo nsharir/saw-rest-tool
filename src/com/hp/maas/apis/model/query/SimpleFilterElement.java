@@ -22,7 +22,7 @@ public class SimpleFilterElement implements FilterElement {
     @Override
     public String getFilterSyntax() {
         String stringValue = "";
-        if (String.class.equals(right.getClass())){
+        if (right != null && String.class.equals(right.getClass())){
             stringValue = "'";
         }
         return left+" "+operator+" "+stringValue+right+stringValue+" ";
