@@ -42,10 +42,32 @@ public class MetadataParser {
             String name = prop.getString(FIELD_NAME);
             String logicalType = prop.getString(FIELD_LOGICAL_TYPE);
             Boolean isHidden = prop.getBoolean(HIDDEN);
+
+            String domain = prop.getString("domain");
+            String localized_label_key = prop.getString("localized_label_key");
+
+            Boolean system = prop.getBoolean("system");
+            Boolean searchable = prop.getBoolean("searchable");
+            Boolean sortable = prop.getBoolean("sortable");
+            Boolean text_searchable = prop.getBoolean("text_searchable");
+            Boolean required = prop.getBoolean("required");
+            Boolean readOnly = prop.getBoolean("readOnly");
+            Boolean unique = prop.getBoolean("unique");
+
+            List<String> tags = new ArrayList<String>();
+
+            JSONArray jsonArray = prop.getJSONArray("tags");
+
+            for (int t=0;t<jsonArray.length();t++){
+                tags.add(jsonArray.getString(t));
+            }
+
+
+
             EntityReferenceDescriptor referenceDescriptor = createReferenceDescriptor(prop, typeName);
 
 
-            FieldDescriptor fieldDescriptor = new FieldDescriptor(name, logicalType,isHidden,referenceDescriptor);
+            FieldDescriptor fieldDescriptor = new FieldDescriptor(name,logicalType,isHidden,referenceDescriptor,domain,localized_label_key,system,searchable,sortable,text_searchable,required,readOnly,unique,tags);
             fields.add(fieldDescriptor);
         }
 

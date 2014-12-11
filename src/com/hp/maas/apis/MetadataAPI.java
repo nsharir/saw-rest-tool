@@ -7,7 +7,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,8 +41,10 @@ public class MetadataAPI {
 
     }
 
-    public void loadAllFromServer() {
-         HttpURLConnection connection = server.buildConnection("metadata/ui/entity-descriptors/");
+    public List<EntityTypeDescriptor> loadAllFromServer() {
+        List<EntityTypeDescriptor> allTypes = new ArrayList<EntityTypeDescriptor>();
+
+        HttpURLConnection connection = server.buildConnection("metadata/ui/entity-descriptors/");
 
          try {
              String json = ConnectionUtils.connectAndGetResponse(connection);
@@ -49,12 +53,15 @@ public class MetadataAPI {
              for (int i=0; i<all.length();i++){
                  EntityTypeDescriptor descriptor = MetadataParser.createEntityTypeDescriptor(all.getJSONObject(i).toString());
                  metaData.put(descriptor.getName(),descriptor);
+                 allTypes.add(descriptor);
              }
 
          } catch (Exception e) {
              throw  new RuntimeException(e);
          }
 
+
+        return allTypes;
     }
 
     public EntityTypeDescriptor getEntityDescriptor(String type){
