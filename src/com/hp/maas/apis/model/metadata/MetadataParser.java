@@ -79,7 +79,15 @@ public class MetadataParser {
         for (int i=0; i< relationsDescriptors.length();i++){
 
             JSONObject prop = relationsDescriptors.getJSONObject(i);
-            relations.add(new RelationDescriptor(prop.getString("name"),prop.getString("cardinality")));
+            relations.add(new RelationDescriptor(prop.getString("name"),
+                                                 prop.getString("cardinality"),
+                                                 prop.getBoolean("system"),
+                                                 prop.getString("localized_opposite_label_key"),
+                                                 prop.getString("nature"),
+                                                 prop.getString("first_endpoint_entity_name"),
+                                                 prop.getString("second_endpoint_entity_name"),
+                                                 prop.getString("localized_label_key")
+            ));
         }
 
 

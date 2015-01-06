@@ -3,6 +3,7 @@ package com.hp.maas.usecases.metadataExport;
 import com.hp.maas.apis.Server;
 import com.hp.maas.apis.model.metadata.EntityTypeDescriptor;
 import com.hp.maas.apis.model.metadata.FieldDescriptor;
+import com.hp.maas.apis.model.metadata.RelationDescriptor;
 import com.hp.maas.usecases.workflow.WorkflowRulePath;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -81,6 +82,29 @@ public class CreateMetadataCSVs {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+
+        for (RelationDescriptor r : md.getRelations()) {
+            if (!"MANY2MANY".equals(r.getCardinality())){
+                continue;
+            }
+            /*try {
+                printer.printRecord(r.getName(),
+                        r.get,
+                        f.getLocalizedLabelKey(),
+                        f.getDomain(),
+                        f.isHidden(),
+                        r.,
+                        f.isSystem(),
+                        f.isSearchable(),
+                        f.isSortable(),
+                        f.isTextSearchable(),
+                        f.isRequired(),
+                        f.isReadOnly(),
+                        f.isUnique());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }*/
         }
 
         try {

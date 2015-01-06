@@ -33,15 +33,14 @@ public class FormsValidationFinder {
     List<Tenant> tenants;
     private boolean simulationMode;
 
-    public FormsValidationFinder(String serverUrl, String ssoToken, String outputFolderPath , String operatorTenantId , List<String> tenantsFilter) {
+    public FormsValidationFinder(String serverUrl, String ssoToken, String outputFolderPath , String operatorTenantId , TenantFilter filter) {
         this.serverUrl = serverUrl;
         this.ssoToken = ssoToken;
-        this.simulationMode = simulationMode;
-        init(outputFolderPath,operatorTenantId,tenantsFilter);
+        init(outputFolderPath,operatorTenantId,filter);
     }
 
 
-    private void init(String outputFolderPath, String operatorTenantId, List<String> tenantsFilter) {
+    private void init(String outputFolderPath, String operatorTenantId, TenantFilter tenantsFilter) {
 
         outputFolder = new File(outputFolderPath);
         if (!outputFolder.exists()){
@@ -61,7 +60,7 @@ public class FormsValidationFinder {
 
     }
 
-    private void createTenantList(String operatorTenantId, List<String> tenantsFilter) {
+    private void createTenantList(String operatorTenantId, TenantFilter tenantsFilter) {
 
         Server server = new Server(serverUrl, operatorTenantId,ssoToken);
         server.authenticate();
@@ -73,8 +72,9 @@ public class FormsValidationFinder {
 
         for (Tenant t : allTenants) {
             if (!t.getId().equals(operatorTenantId) && "Active".equals(t.getState())) {
-                if (tenantsFilter == null || tenantsFilter.contains(t.getId()))
-                tenants.add(t);
+                if (tenantsFilter == null || tenantsFilter.shouldRun(t)) {
+                    tenants.add(t);
+                }
             }
         }
     }
@@ -97,7 +97,12 @@ public class FormsValidationFinder {
                 "}\n");
         reportGlobal("------------------------------------------------------------------------------");
 
+        int total = tenants.size();
+        int current = 0;
+
         for (Tenant t : tenants) {
+            current++;
+            reportGlobal("["+current+"/"+total+"]"+"Running tenant "+t.getTenantName()+"...");
             try {
                 runTenant(t);
             }catch(Throwable e){

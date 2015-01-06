@@ -1,0 +1,4680 @@
+{"completionStatus": "OK", "results": [
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10021",
+        "Name": "Active Incidents by priority",
+        "Description": "Gives each user a quick view of all Incidents assigned to them, grouped by priority and status. Focuses attention on the most urgent issues and helps effectively manage priorities.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Incident",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "Active"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "true"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "Status",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "RegisteredForActualService"],
+            "GroupByField": "Priority",
+            "XAxisCaption": "",
+            "YAxisCaption": "Status"
+        },
+        "id": "52c95a520cf23c1ed82517ec"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Article count per author",
+        "Description": "Shows the number of published articles grouped by their author and stacked by the related service definition",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "Article",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "Subtype"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Article"
+                                        }
+                                    },
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "Subtype"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "PhaseId"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "External"
+                                        }
+                                    },
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "PhaseId"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Internal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "Title", "CreatedByPerson"],
+            "OperationField": "",
+            "SubGroupByField": "Service",
+            "SortByField": "CreatedByPerson",
+            "SubSortByField": "",
+            "GroupByField": "CreatedByPerson",
+            "GroupDisplay": "stacked",
+            "PieValueOption": "number",
+            "XAxisCaption": "Author",
+            "YAxisCaption": "Number of articles"
+        },
+        "id": "540307f10cf2172423053b68"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "icon-table",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Article ranking",
+        "Description": "For each article, displays the following measurements:\n 1. Number of views\n2. Number of votes in Self-Service Portal\n3. Number of times the article was used as a solution for requests and incidents",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": false,
+            "Operation": "Count",
+            "Entity": "Article",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "Subtype"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Article"
+                                        }
+                                    },
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "Subtype"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "PhaseId"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "External"
+                                        }
+                                    },
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "PhaseId"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Internal"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "Title", "PhaseId", "Views", "ArticleVotes", "Usages"],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "Views",
+            "SubSortByField": "",
+            "GroupByField": "PhaseId"
+        },
+        "id": "540307f30cf2172423053bb4"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Article views per article author",
+        "Description": "Shows the sum of all article views grouped by the authors of the articles",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Sum",
+            "Entity": "Article",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "Subtype"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Article"
+                                        }
+                                    },
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "Subtype"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "External"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "Title", "CreatedByPerson", "Views"],
+            "PieValueOption": "number",
+            "OperationField": "Views",
+            "SubGroupByField": "",
+            "SortByField": "CreatedByPerson",
+            "SubSortByField": "Views",
+            "GroupByField": "CreatedByPerson",
+            "XAxisCaption": "Author",
+            "YAxisCaption": "Sum of views"
+        },
+        "id": "540307f10cf2172423053b7a"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "icon-table",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10071",
+        "System": "true",
+        "Name": "Article views per service",
+        "Description": "Shows the sum of views for articles in External phase grouped by the Service Definition",
+        "Properties": {
+            "EnableTabularReport": true,
+            "Operation": "Sum",
+            "Entity": "Article",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "External"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "Subtype"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Article"
+                                        }
+                                    },
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "Subtype"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "Title", "Service", "Views"],
+            "OperationField": "Views",
+            "SortByField": "Service",
+            "SubSortByField": "Views",
+            "GroupByField": "Service",
+            "XAxisCaption": "Service definition",
+            "YAxisCaption": "Sum of views"
+        },
+        "id": "540307f20cf2172423053ba0"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "icon-table",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10071",
+        "Name": "Articles by phase",
+        "Description": "Shows the number of articles grouped by their current phase to provide an overview of the lifecycle of IT knowledge articles",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "Operation": "Count",
+            "Entity": "Article",
+            "SortByField": "Title",
+            "Filter": {},
+            "Columns": ["Id", "Title", "PhaseId", "CreatedByPerson"],
+            "GroupByField": "PhaseId",
+            "XAxisCaption": "Phase",
+            "YAxisCaption": "Number of Articles",
+            "PieValueOption": "number"
+        },
+        "id": "52c95a530cf23c1ed825180a"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "icon-table",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10071",
+        "System": "true",
+        "Name": "Average elapsed duration for incidents by Service",
+        "Description": "Average elapsed duration of incidents by target type and service",
+        "Properties": {
+            "Operation": "Avg",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "ElapsedDuration",
+            "SubGroupByField": "RegisteredForActualService",
+            "GroupByField": "TargetType",
+            "SortByField": "ElapsedDuration",
+            "EnableTabularReport": true
+        },
+        "id": "540307f30cf2172423053ba6"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Average elapsed duration for incidents by group",
+        "Description": "Average elapsed duration of incidents by target type and owning group",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Avg",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "ElapsedDuration",
+            "SubGroupByField": "ServiceDeskGroup",
+            "GroupByField": "TargetType",
+            "SortByField": "ElapsedDuration",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "PieValueOption": "number"
+        },
+        "id": "540307f20cf2172423053b84"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Average elapsed duration for incidents by priority",
+        "Description": "Average elapsed duration of incidents by target type and priority",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Avg",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "ElapsedDuration",
+            "SubGroupByField": "Priority",
+            "GroupByField": "TargetType",
+            "SortByField": "ElapsedDuration",
+            "SubSortByField": ""
+        },
+        "id": "540307f10cf2172423053b66"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Average elapsed duration for requests by group",
+        "Description": "Average elapsed duration of requests by target type and assignment group",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Avg",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "ElapsedDuration",
+            "SubGroupByField": "AssignedToGroup",
+            "GroupByField": "TargetType",
+            "SortByField": "ElapsedDuration",
+            "SubSortByField": ""
+        },
+        "id": "540307f30cf2172423053bb1"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Average elapsed duration for requests by priority",
+        "Description": "Average elapsed duration of requests by target type and priority",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Avg",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "ElapsedDuration",
+            "SubGroupByField": "Priority",
+            "GroupByField": "TargetType",
+            "SortByField": "ElapsedDuration",
+            "SubSortByField": ""
+        },
+        "id": "540307f20cf2172423053b97"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Average elapsed duration for requests by service",
+        "Description": "Average elapsed duration of requests by target type and service",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Avg",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "ElapsedDuration",
+            "SubGroupByField": "RegisteredForActualService",
+            "GroupByField": "TargetType",
+            "SortByField": "ElapsedDuration",
+            "SubSortByField": ""
+        },
+        "id": "540307f20cf2172423053b8e"
+    },
+    {
+        "System": true,
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Name": "Catalog demand in the past month",
+        "Description": "Shows the number of Service Requests created during the past month, grouped by their Actual Service. Provides IT with information about Service Catalog demand volume.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Request",
+            "SortByField": "RegisteredForActualService",
+            "SubSortByField": "CreateTime",
+            "GroupDisplay": "",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "BETWEEN",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "CreateTime"
+                                },
+                                "rExpression": {
+                                    "lowerBound": {
+                                        "operator": "DATE_SYMBOL",
+                                        "value": "startOfMonthAgo"
+                                    },
+                                    "upperBound": {
+                                        "operator": "DATE_SYMBOL",
+                                        "value": "endOfToday"
+                                    }
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "RequestType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "ServiceRequest"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "RegisteredForActualService", "Category", "CreateTime"],
+            "GroupByField": "RegisteredForActualService",
+            "XAxisCaption": "Number of Requests",
+            "YAxisCaption": "Service"
+        },
+        "id": "52c95a520cf23c1ed82517fa"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Changes by category",
+        "Description": "Shows the number of currently active Change Requests grouped by their Category to focus attention on problematic areas.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Change",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {},
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "RiskAssessment", "OwnedByPerson", "Category", "AffectsActualService"],
+            "GroupByField": "Category"
+        },
+        "id": "52c95a540cf23c1ed8251815"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Changes by owning group",
+        "Description": "Shows the current volume of active Changes per Owning Group to identify bottlenecks and effectively manage team load.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Change",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {},
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "RiskAssessment", "OwnedByPerson", "Category", "AffectsActualService"],
+            "GroupByField": "OwnedByGroup"
+        },
+        "id": "52c95a540cf23c1ed8251814"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Changes by phase",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Change",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {},
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "RiskAssessment", "OwnedByPerson", "Category", "AffectsActualService"],
+            "GroupByField": "PhaseId"
+        },
+        "id": "52c95a540cf23c1ed8251818"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Changes by priority",
+        "Description": "Shows the number of currently active Change Requests grouped by their Priority. Focuses attention on the most urgent issues and helps effectively manage priorities.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Change",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {},
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "RiskAssessment", "OwnedByPerson", "Category", "AffectsActualService"],
+            "GroupByField": "Priority"
+        },
+        "id": "52c95a540cf23c1ed8251816"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10021",
+        "Name": "Changes by service",
+        "Description": "Shows the current volume of active Change Requests grouped by their Actual Service to focus attention on problematic service areas.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Change",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "ImpactScope"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Enterprise"
+                                        }
+                                    },
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "ImpactScope"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "SiteOrDepartment"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "PhaseId",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "RiskAssessment", "OwnedByPerson", "Category", "AffectsActualService"],
+            "GroupByField": "AffectsActualService",
+            "YAxisCaption": "Phase"
+        },
+        "id": "52c95a540cf23c1ed8251810"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Changes unassigned by service",
+        "Description": "Shows the current volume of active Change Requests grouped by their Actual Service to focus attention on problematic service areas.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Change",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "OwnedByPerson"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "OwnedByGroup"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "RiskAssessment", "OwnedByPerson", "Category", "AffectsActualService"],
+            "GroupByField": "AffectsActualService"
+        },
+        "id": "52c95a540cf23c1ed8251817"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Chat request response achievement rate",
+        "Description": "SLT achievement trend for Chat request response in requests",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "ChatRequestResponse"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "",
+            "SubGroupByField": "ParentCreationTime",
+            "GroupByField": "Status",
+            "GroupDisplay": "stacked",
+            "PieValueOption": "percent",
+            "SubGroupByFieldDateRanges": "TruncMonth"
+        },
+        "id": "540307f30cf2172423053bc3"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10071",
+        "Name": "Cloned Report",
+        "Description": "New description",
+        "Properties": {
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "RegisteredForActualService"],
+            "GroupByField": "Priority",
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "YAxisCaption": "Category",
+            "EnableChartReport": true,
+            "SubGroupByField": "Category",
+            "GroupDisplay": "stacked",
+            "XAxisCaption": "",
+            "SortByField": "",
+            "Filter": {
+                "panelFilter": {
+                    "filterMode": "normal",
+                    "filter": {
+                        "rExpression": {
+                            "value": "true",
+                            "operator": "LITERAL"
+                        },
+                        "lExpression": {
+                            "value": "Active",
+                            "operator": "PROPERTY"
+                        },
+                        "operator": "EQUALS"
+                    }
+                }
+            },
+            "SubSortByField": "",
+            "Entity": "Incident"
+        },
+        "id": "543398420cf21608d36c1a85"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Critical tasks due today by group",
+        "Description": "Shows the volume of critical Tasks which are planned to be completed today, listed by Owning Group to identify bottlenecks and effectively manage team load.",
+        "Properties": {
+            "dashboardSource": "ems",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Task",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "BETWEEN",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "DueEndTime"
+                                },
+                                "rExpression": {
+                                    "lowerBound": {
+                                        "operator": "DATE_SYMBOL",
+                                        "value": "startOfToday"
+                                    },
+                                    "upperBound": {
+                                        "operator": "DATE_SYMBOL",
+                                        "value": "endOfToday"
+                                    }
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "IsCritical"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "AssignmentGroup",
+            "Columns": ["Id", "TaskDomain", "TaskType", "PlannedEndDate", "Assignee", "AssignmentGroup", "AffectsService"],
+            "GroupByField": "PhaseId",
+            "YAxisCaption": "Assignment Group"
+        },
+        "id": "540307f30cf2172423053bc0"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Critical tasks due today by service",
+        "Description": "Shows the volume of critical Tasks which are planned to be completed today, listed by their Actual Service to focus attention on problematic service areas.",
+        "Properties": {
+            "dashboardSource": "ems",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Task",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "BETWEEN",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "DueEndTime"
+                                },
+                                "rExpression": {
+                                    "lowerBound": {
+                                        "operator": "DATE_SYMBOL",
+                                        "value": "startOfToday"
+                                    },
+                                    "upperBound": {
+                                        "operator": "DATE_SYMBOL",
+                                        "value": "endOfToday"
+                                    }
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "IsCritical"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "AffectsService",
+            "Columns": ["Id", "TaskDomain", "TaskType", "PlannedEndDate", "Assignee", "AssignmentGroup", "AffectsService"],
+            "GroupByField": "PhaseId",
+            "YAxisCaption": "Phase"
+        },
+        "id": "540307f30cf2172423053bb7"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "reports-icon-pie",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Devices by brand",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "Device",
+            "dashboardSource": "warehouse",
+            "Filter": {},
+            "Columns": ["Id", "DisplayLabel", "SubType", "OsType", "OsName", "Model", "VirtualDevice", "Environment", "PhaseId"],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "Brand"
+        },
+        "id": "540307f20cf2172423053b8a"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Devices by stockroom and subtype",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "Device",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "PhaseId"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "pInStock"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "DisplayLabel", "SubType", "OsType", "OsName", "Model", "VirtualDevice", "Environment", "PhaseId"],
+            "OperationField": "",
+            "SubGroupByField": "SubType",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "LocatedInStock",
+            "XAxisCaption": "Stockroom",
+            "YAxisCaption": "Total Count",
+            "GroupDisplay": "stacked"
+        },
+        "id": "540307f30cf2172423053bba"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Devices by subtype",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "Device",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "OR",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pInStock"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pInUse"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pPrepare"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "DisplayLabel", "SubType", "OsType", "OsName", "Model", "VirtualDevice", "Environment", "PhaseId"],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "",
+            "SubSortByField": "",
+            "XAxisCaption": "Subtype",
+            "YAxisCaption": "Total Count",
+            "GroupByField": "SubType"
+        },
+        "id": "540307f10cf2172423053b80"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Employees by Department and Gender",
+        "Description": "Shows a distribution of employees across departments and gender",
+        "Properties": {
+            "Operation": "Count",
+            "Entity": "Employee",
+            "SortByField": "",
+            "SubSortByField": "",
+            "Columns": [],
+            "OperationField": "",
+            "SubGroupByField": "Gender",
+            "GroupByField": "Department"
+        },
+        "id": "540307f30cf2172423053bc6"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Employees by Gender",
+        "Description": "Shows a distribution of employees across genders",
+        "Properties": {
+            "Operation": "Count",
+            "Entity": "Employee",
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "",
+            "SubSortByField": "",
+            "Columns": [],
+            "GroupByField": "Gender"
+        },
+        "id": "540307f20cf2172423053b8c"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Incidents by assignment group",
+        "Description": "Shows the current volume of active Incidents per Assignment Group to identify bottlenecks and effectively manage team load.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Incident",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "Active"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "true"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "RegisteredForActualService"],
+            "GroupByField": "AssignedGroup"
+        },
+        "id": "52c95a520cf23c1ed82517e9"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Incidents by category",
+        "Description": "Shows the number of currently active Incidents grouped by their Category to focus attention on problematic areas.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Incident",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "Active"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "true"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "RegisteredForActualService"],
+            "GroupByField": "Category"
+        },
+        "id": "52c95a520cf23c1ed82517ed"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "Name": "Incidents by priority and service",
+        "Description": "Shows the number of active Incidents by priority and service in a 100% stacked column format. This format can help to visualize and compare the percentage of open incidents across priority and service.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Incident",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "Active"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "true"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "PieValueOption": "percent",
+            "SubGroupByField": "RegisteredForActualService",
+            "GroupByField": "Priority",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "RegisteredForActualService"]
+        },
+        "id": "5337f0ac0cf20a4af644dad9"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Incidents by service",
+        "Description": "Shows the current volume of active Incidents grouped by their Actual Service to focus attention on problematic service areas.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Incident",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "Active"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "true"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "RegisteredForActualService"],
+            "GroupByField": "RegisteredForActualService"
+        },
+        "id": "52c95a520cf23c1ed82517eb"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10071",
+        "Name": "Incidents unassigned by priority",
+        "Description": "a_Cloned Report",
+        "Properties": {
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "RegisteredForActualService"],
+            "GroupByField": "Priority",
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "YAxisCaption": "Category",
+            "EnableChartReport": true,
+            "SubGroupByField": "Category",
+            "GroupDisplay": "stacked",
+            "XAxisCaption": "",
+            "SortByField": "",
+            "Filter": {
+                "panelFilter": {
+                    "filterMode": "normal",
+                    "filter": {
+                        "rExpression": {
+                            "value": "true",
+                            "operator": "LITERAL"
+                        },
+                        "lExpression": {
+                            "value": "Active",
+                            "operator": "PROPERTY"
+                        },
+                        "operator": "EQUALS"
+                    }
+                }
+            },
+            "SubSortByField": "",
+            "Entity": "Incident"
+        },
+        "id": "52c95a520cf23c1ed82517ea"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "reports-icon-pie",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Infrastructure \u0026 peripheral assets by brand",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "InfrastructurePeripheral",
+            "dashboardSource": "warehouse",
+            "Filter": {},
+            "Columns": ["Id", "DisplayLabel", "SubType", "AssetModel", "PhaseId"],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "Brand"
+        },
+        "id": "540307f00cf2172423053b56"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Infrastructure \u0026 peripheral assets by stockroom and subtype",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "InfrastructurePeripheral",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "PhaseId"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "pInStock"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "DisplayLabel", "SubType", "AssetModel", "PhaseId"],
+            "OperationField": "",
+            "SubGroupByField": "SubType",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "LocatedInStock",
+            "XAxisCaption": "Stockroom",
+            "YAxisCaption": "Total Count",
+            "GroupDisplay": "stacked"
+        },
+        "id": "540307f40cf2172423053bcf"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Infrastructure \u0026 peripheral assets by subtype",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "InfrastructurePeripheral",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "OR",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pInStock"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pInUse"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pPrepare"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "DisplayLabel", "SubType", "AssetModel", "PhaseId"],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "",
+            "SubSortByField": "",
+            "XAxisCaption": "Subtype",
+            "YAxisCaption": "Total Count",
+            "GroupByField": "SubType"
+        },
+        "id": "540307f10cf2172423053b76"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Initial review achievement rate for incidents",
+        "Description": "SLT achievement trend for initial review in incidents",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "InitialReview"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "",
+            "SubGroupByField": "ParentCreationTime",
+            "GroupByField": "Status",
+            "GroupDisplay": "stacked",
+            "PieValueOption": "percent",
+            "SubGroupByFieldDateRanges": "TruncMonth"
+        },
+        "id": "540307f10cf2172423053b6b"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Initial review achievement rate for requests",
+        "Description": "SLT achievement trend for initial review in requests",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "InitialReview"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "",
+            "SubGroupByField": "ParentCreationTime",
+            "GroupByField": "Status",
+            "GroupDisplay": "stacked",
+            "PieValueOption": "percent",
+            "SubGroupByFieldDateRanges": "TruncMonth"
+        },
+        "id": "540307f10cf2172423053b70"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "reports-icon-pie",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Licenses by publisher",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "License",
+            "dashboardSource": "warehouse",
+            "Filter": {},
+            "Columns": ["Id", "DisplayLabel", "Publisher", "LicenseType", "TotalRights", "EndDate"],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "Publisher"
+        },
+        "id": "540307f20cf2172423053b90"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10021",
+        "Name": "My changes by category",
+        "Description": "Gives each user a quick view of all Changes assigned to them, grouped by their Category to focus attention on problematic areas.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Change",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "BasedOnChangeModel"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "11313"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "Priority",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "RiskAssessment", "OwnedByPerson", "Category", "AffectsActualService"],
+            "GroupByField": "Category",
+            "YAxisCaption": ""
+        },
+        "id": "52c95a540cf23c1ed8251812"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "My changes by phase",
+        "Description": "Gives each user a quick view of all Change Requests assigned to them, grouped by their Actual Service to focus attention on problematic service areas.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Change",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "OwnedByPerson"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "${current_user.Id}"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "RiskAssessment",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "RiskAssessment", "OwnedByPerson", "Category", "AffectsActualService", "BreachStatus"],
+            "GroupByField": "PhaseId",
+            "YAxisCaption": "Risk"
+        },
+        "id": "540307f30cf2172423053baa"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "My incidents by priority",
+        "Description": "Gives each user a quick view of all Incidents assigned to them, grouped by priority and status. Focuses attention on the most urgent issues and helps effectively manage priorities.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Incident",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "AssignedPerson"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "${current_user.Id}"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "Status",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "RegisteredForActualService"],
+            "GroupByField": "Priority",
+            "XAxisCaption": "",
+            "YAxisCaption": "Status"
+        },
+        "id": "540307f40cf2172423053bd9"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "reports-icon-pie",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "My problems by priority",
+        "Description": "Gives each user a quick view of all Problems assigned to them, grouped by priority. Focuses attention on the most urgent issues and helps effectively manage priorities.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Problem",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "OwnedByPerson"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "${current_user.Id}"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "AffectsActualService"],
+            "GroupByField": "Priority"
+        },
+        "id": "540307f20cf2172423053b88"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "My support requests by priority",
+        "Description": "Shows the number of currently active Support Requests assigned to the current user, grouped by their Priority and Status. Focuses attention on the most urgent issues and helps effectively manage priorities.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Request",
+            "SortByField": "Priority",
+            "SubSortByField": "Status",
+            "GroupDisplay": "grouped",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "RequestType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "SupportRequest"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "AssignedToPerson"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "${current_user.Id}"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "Status",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "Status", "RegisteredForActualService", "Category"],
+            "GroupByField": "Priority",
+            "XAxisCaption": "Priority",
+            "YAxisCaption": "Number of Requests"
+        },
+        "id": "540307f20cf2172423053b92"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "icon-table",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "News by importance",
+        "Description": "News by importance",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": false,
+            "Operation": "Count",
+            "Entity": "Article",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "Subtype"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "News"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Visible"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "Title", "Priority"],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "GroupByField": "Priority",
+            "SubSortByField": "",
+            "SortByField": "Priority"
+        },
+        "id": "540307f10cf2172423053b82"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "reports-icon-pie",
+        "ReportAccess": "private",
+        "ReportTypeId": "1",
+        "Owner": "10071",
+        "Name": "Pending approvals",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "Task",
+            "dashboardSource": "ems",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "OR",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PlatformTaskType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Approval"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "Assignee"],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "PhaseId"
+        },
+        "id": "53a999e70cf28be1c464844a"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Problems by category",
+        "Description": "Shows the number of currently active Problems grouped by their Category to focus attention on problematic areas.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Problem",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "Filter": {},
+            "SubGroupByField": "PhaseId",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "AffectsActualService"],
+            "GroupByField": "Category",
+            "YAxisCaption": ""
+        },
+        "id": "52c95a520cf23c1ed82517fb"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Problems by owning group",
+        "Description": "Shows the current volume of active Problems per Owning Group to identify bottlenecks and effectively manage team load.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Problem",
+            "Filter": {},
+            "SubGroupByField": "",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "AffectsActualService"],
+            "GroupByField": "OwnedByGroup"
+        },
+        "id": "52c95a530cf23c1ed8251803"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Problems by priority",
+        "Description": "Shows the number of currently active Problems grouped by their Priority. Focuses attention on the most urgent issues and helps effectively manage priorities.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Problem",
+            "Filter": {},
+            "SubGroupByField": "",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "AffectsActualService"],
+            "GroupByField": "Priority"
+        },
+        "id": "52c95a530cf23c1ed82517fd"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "reports-icon-pie",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Problems by status",
+        "Description": "Shows the number of currently active Problems grouped by their Status to focus attention on more urgent issues.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Problem",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {},
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "AffectsActualService"],
+            "GroupByField": "Status"
+        },
+        "id": "52c95a530cf23c1ed8251802"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "System": true,
+        "Name": "Problems unassigned by priority",
+        "Description": "Shows the current volume of active Problems which are waiting to be assigned and are grouped by their Priority and Category. Focuses attention on the most urgent issues and helps effectively manage priorities.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Problem",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "OwnedByGroup"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "Category",
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "AffectsActualService"],
+            "GroupByField": "Priority",
+            "YAxisCaption": "Category"
+        },
+        "id": "52c95a530cf23c1ed8251805"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "reports-icon-pie",
+        "ReportAccess": "private",
+        "ReportTypeId": "1",
+        "Owner": "10071",
+        "Name": "RequestByPriority",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Filter": {},
+            "Columns": [],
+            "Entity": "Request",
+            "dashboardSource": "warehouse",
+            "GroupByField": "Priority"
+        },
+        "id": "544379890cf2b0f92ad3b15f"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "private",
+        "ReportTypeId": "1",
+        "Owner": "10071",
+        "Name": "Requests Age report",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "Request",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "OR",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "TicketAgeGroup_c"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "LessThan10_c"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "TicketAgeGroup_c"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "MoreThan10_c"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "TicketAgeGroup_c"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "MoreThan20_c"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "TicketAgeGroup_c"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "MoreThan30_c"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "",
+            "SubGroupByField": "TicketAgeGroup_c",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "AssignedToGroup"
+        },
+        "id": "53df3b810cf28e63a29b2ae5"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "reports-icon-pie",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Requests by completion code",
+        "Description": "Shows closed requests grouped by completion code",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "Request",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "NOT_EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "Active"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "true"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "DisplayLabel", "RequestType", "CreationSource", "CompletionCode"],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "CompletionCode",
+            "SubSortByField": "",
+            "GroupByField": "CompletionCode"
+        },
+        "id": "540307f10cf2172423053b7c"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "reports-icon-pie",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Requests by creation source",
+        "Description": "Shows requests grouped by creation source",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Request",
+            "SortByField": "CreationSource",
+            "SubSortByField": "",
+            "GroupDisplay": "",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "BETWEEN",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "EmsCreationTime"
+                        },
+                        "rExpression": {
+                            "lowerBound": {
+                                "operator": "DATE_SYMBOL",
+                                "value": "startOfYearAgo"
+                            },
+                            "upperBound": {
+                                "operator": "DATE_SYMBOL",
+                                "value": "endOfToday"
+                            }
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "CreationSource", "Category"],
+            "GroupByField": "CreationSource"
+        },
+        "id": "540307f20cf2172423053b9a"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Requests per creation source by completion code",
+        "Description": "Shows requests per creation source grouped by completion code",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "Request",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "NOT_EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "Active"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "true"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "DisplayLabel", "CreationSource", "CompletionCode"],
+            "OperationField": "",
+            "SubGroupByField": "CompletionCode",
+            "SortByField": "CreationSource",
+            "SubSortByField": "CompletionCode",
+            "GroupByField": "CreationSource",
+            "GroupDisplay": "grouped",
+            "XAxisCaption": "Creation source",
+            "YAxisCaption": "Total requests"
+        },
+        "id": "540307f20cf2172423053b86"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "icon-table",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Requests per offering",
+        "Description": "Show offerings ordered by the number of requests submitted against the offering",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": false,
+            "Operation": "Count",
+            "Entity": "Offering",
+            "dashboardSource": "warehouse",
+            "Filter": {},
+            "Columns": ["Id", "DisplayLabel", "OfferingType", "NumOfRequests"],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "NumOfRequests",
+            "SubSortByField": "",
+            "GroupByField": "Id"
+        },
+        "id": "540307f00cf2172423053b58"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10029",
+        "Name": "Requests with no Service",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "RegisteredForActualService"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "${noValue}"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "Entity": "Request",
+            "dashboardSource": "warehouse",
+            "SubGroupByField": "",
+            "GroupByField": "Urgency"
+        },
+        "id": "5420d41e0cf2f455501e3aa2"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Resolution achievement rate for incidents",
+        "Description": "SLT achievement trend for resolution in incidents",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Resolution"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "",
+            "SubGroupByField": "ParentCreationTime",
+            "GroupByField": "Status",
+            "GroupDisplay": "stacked",
+            "PieValueOption": "percent",
+            "SubGroupByFieldDateRanges": "TruncMonth"
+        },
+        "id": "540307f40cf2172423053bd5"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Resolution achievement rate for requests",
+        "Description": "SLT achievement trend for resolution in requests",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Resolution"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "OperationField": "",
+            "SubGroupByField": "ParentCreationTime",
+            "GroupByField": "Status",
+            "GroupDisplay": "stacked",
+            "PieValueOption": "percent",
+            "SubGroupByFieldDateRanges": "TruncMonth"
+        },
+        "id": "540307f00cf2172423053b5a"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10092",
+        "Name": "SLT Scott",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {},
+            "Columns": [],
+            "OperationField": "",
+            "SubGroupByField": "Breached",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "TargetType",
+            "PieValueOption": "percent",
+            "GroupDisplay": "stacked"
+        },
+        "id": "538757340cf2e35782e04502"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for incidents in initial review by owning group",
+        "Description": "Achievement percentage for incidents in initial review by owning group",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "InitialReview"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "ServiceDeskGroup",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f40cf2172423053bcc"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for incidents in initial review by priority",
+        "Description": "Achievement percentage for incidents in initial review by priority",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "InitialReview"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "Priority",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f30cf2172423053bc9"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for incidents in initial review by service",
+        "Description": "Achievement percentage for incidents in initial review by service",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "InitialReview"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "RegisteredForActualService",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f10cf2172423053b6e"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for incidents in resolution by owning group",
+        "Description": "Achievement percentage for incidents in resolution by owning group",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Resolution"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "ServiceDeskGroup",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f30cf2172423053bad"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for incidents in resolution by priority",
+        "Description": "Achievement percentage for incidents in resolution by priority",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Resolution"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "Priority",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f00cf2172423053b52"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for incidents in resolution by service",
+        "Description": "Achievement percentage for incidents in resolution by service",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Incident"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Resolution"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "RegisteredForActualService",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f00cf2172423053b60"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for requests in chat request response by assignment group",
+        "Description": "Achievement percentage for requests in chat request response by assignment Group",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "ChatRequestResponse"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "AssignedToGroup",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f30cf2172423053bbd"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for requests in chat request response by priority",
+        "Description": "Achievement percentage for requests in chat request response by priority",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "ChatRequestResponse"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "Priority",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f00cf2172423053b50"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for requests in chat request response by service",
+        "Description": "Achievement percentage for requests in chat request response by service",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "ChatRequestResponse"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "RegisteredForActualService",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f40cf2172423053bd2"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for requests in initial review by assignment group",
+        "Description": "Achievement percentage for requests in initial review by assignment Group",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "InitialReview"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "AssignedToGroup",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f10cf2172423053b62"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for requests in initial review by priority",
+        "Description": "Achievement percentage for requests in initial review by priority",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "InitialReview"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "Priority",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f10cf2172423053b7e"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for requests in initial review by service",
+        "Description": "Achievement percentage for requests in initial review by service",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "InitialReview"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "RegisteredForActualService",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f20cf2172423053b9d"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for requests in resolution by assignment group",
+        "Description": "Achievement percentage for requests in resolution by assignment Group",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Resolution"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "AssignedToGroup",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f00cf2172423053b5c"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for requests in resolution by priority",
+        "Description": "Achievement percentage for requests in resolution by priority",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Resolution"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "Priority",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f10cf2172423053b73"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement percentage for requests in resolution by service",
+        "Description": "Achievement percentage for requests in resolution by service",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "STARTS_WITH",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "EntityType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "Request"
+                                }
+                            },
+                            {
+                                "operator": "OR",
+                                "filters": [
+                                    {
+                                        "operator": "EQUALS",
+                                        "lExpression": {
+                                            "operator": "PROPERTY",
+                                            "value": "TargetType"
+                                        },
+                                        "rExpression": {
+                                            "operator": "LITERAL",
+                                            "value": "Resolution"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "operator": "NOT_EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "Status",
+            "GroupByField": "RegisteredForActualService",
+            "GroupDisplay": "stacked",
+            "SortByField": "Priority",
+            "SubSortByField": "RegisteredForActualService"
+        },
+        "id": "540307f30cf2172423053ba3"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement rate for incidents",
+        "Description": "Percent of incidents that were processed according to all applicable targets (Achieved vs Failed)",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "GroupByFieldDateRanges": "TruncMonth",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "NOT_EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "Active"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "true"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "Entity": "Incident",
+            "dashboardSource": "warehouse",
+            "PieValueOption": "percent",
+            "SubGroupByField": "SLTAggregatedStatus",
+            "GroupByField": "EmsCreationTime",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked"
+        },
+        "id": "540307f10cf2172423053b78"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "SLT achievement rate for requests",
+        "Description": "Percent of requests that were processed according to all applicable targets (Achieved vs Failed)",
+        "Properties": {
+            "EnableTabularReport": false,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "GroupByFieldDateRanges": "TruncMonth",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "NOT_EQUALS",
+                        "lExpression": {
+                            "operator": "PROPERTY",
+                            "value": "Active"
+                        },
+                        "rExpression": {
+                            "operator": "LITERAL",
+                            "value": "true"
+                        }
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": [],
+            "Entity": "Request",
+            "dashboardSource": "warehouse",
+            "PieValueOption": "percent",
+            "SubGroupByField": "SLTAggregatedStatus",
+            "GroupByField": "EmsCreationTime",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupDisplay": "stacked"
+        },
+        "id": "540307f40cf2172423053bdc"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "Service level targets",
+        "Description": "Overall report on service level targets by record type and target type",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Filter": {},
+            "Columns": ["Name", "EntityType", "TargetType", "Priority", "RegisteredForActualService", "Status", "Active", "Suspended", "Breached", "OriginalStartTime", "TargetDate", "AchievementDate", "ActualDuration", "ElapsedDuration", "WorkScheduleName", "EntityId"],
+            "Entity": "ServiceLevelTarget",
+            "dashboardSource": "warehouse",
+            "SubGroupByField": "TargetType",
+            "GroupByField": "EntityType",
+            "SortByField": "",
+            "SubSortByField": ""
+        },
+        "id": "540307f20cf2172423053b94"
+    },
+    {
+        "System": true,
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Name": "Support Request Volume in the Past Month",
+        "Description": "Shows the volume of Support Requests created in the past month, grouped by their Actual Service.  IT can understand for which services business users most require IT assistance.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Request",
+            "SortByField": "RegisteredForActualService",
+            "SubSortByField": "CreateTime",
+            "GroupDisplay": "",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "RequestType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "SupportRequest"
+                                }
+                            },
+                            {
+                                "operator": "BETWEEN",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "CreateTime"
+                                },
+                                "rExpression": {
+                                    "lowerBound": {
+                                        "operator": "DATE_SYMBOL",
+                                        "value": "startOfMonthAgo"
+                                    },
+                                    "upperBound": {
+                                        "operator": "DATE_SYMBOL",
+                                        "value": "endOfToday"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "RegisteredForActualService", "RequestsOffering", "CreateTime"],
+            "GroupByField": "RegisteredForActualService",
+            "XAxisCaption": "Number of Requests",
+            "YAxisCaption": "Service"
+        },
+        "id": "52c95a520cf23c1ed82517f8"
+    },
+    {
+        "ChartType": "bar",
+        "System": true,
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Name": "Support requests by category",
+        "Description": "Shows the number of currently active Support Requests grouped by their Category to focus attention on problematic areas.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Request",
+            "SortByField": "Category",
+            "SubSortByField": "RegisteredForActualService",
+            "GroupDisplay": "",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "RequestType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "SupportRequest"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "Status", "RegisteredForActualService", "AssignedToGroup", "Category"],
+            "GroupByField": "Category",
+            "YAxisCaption": "Category",
+            "XAxisCaption": "Number of Requests"
+        },
+        "id": "52c95a520cf23c1ed82517f2"
+    },
+    {
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10021",
+        "Name": "Support requests by group",
+        "Description": "Shows the current volume of active Support Requests per assigned Help Desk Group to identify bottlenecks and effectively manage team load.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Request",
+            "SortByField": "AssignedToGroup",
+            "SubSortByField": "Priority",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "RequestType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "SupportRequest"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Category"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "10693"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "Priority",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "Status", "RegisteredForActualService", "Category", "AssignedToGroup", "AssignedToPerson"],
+            "GroupByField": "AssignedToGroup",
+            "YAxisCaption": "Help Desk Group",
+            "XAxisCaption": "Number of Requests"
+        },
+        "id": "52c95a520cf23c1ed82517f3"
+    },
+    {
+        "System": true,
+        "ChartType": "bar",
+        "ImageUrl": "reports-icon-bar",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Name": "Support requests by service",
+        "Description": "Shows the current volume of active Support Requests grouped by their Actual Service to focus attention on problematic service areas.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Request",
+            "SortByField": "RegisteredForActualService",
+            "SubSortByField": "Priority",
+            "GroupDisplay": "stacked",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "RequestType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "SupportRequest"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "Priority",
+            "Columns": ["Id", "DisplayLabel", "Priority", "Status", "PhaseId", "RegisteredForActualService", "Category", "AssignedToGroup"],
+            "GroupByField": "RegisteredForActualService",
+            "YAxisCaption": "Service",
+            "XAxisCaption": "Number of Requests"
+        },
+        "id": "52c95a520cf23c1ed82517f4"
+    },
+    {
+        "System": true,
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Name": "Support requests by status",
+        "Description": "Shows the number of currently active Support Requests grouped by their Status to focus attention on more urgent issues.",
+        "Properties": {
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "Entity": "Request",
+            "SortByField": "Status",
+            "SubSortByField": "Priority",
+            "GroupDisplay": "",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "AND",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "RequestType"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "SupportRequest"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "Active"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "true"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "SubGroupByField": "",
+            "Columns": ["Id", "DisplayLabel", "PhaseId", "Priority", "RegisteredForActualService", "Category", "AssignedToGroup", "AssignedToPerson"],
+            "GroupByField": "Status",
+            "YAxisCaption": "Number of Requests"
+        },
+        "id": "52c95a520cf23c1ed82517f1"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10071",
+        "Name": "a_Cloned Report",
+        "Description": "New description",
+        "Properties": {
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "RegisteredForActualService"],
+            "GroupByField": "Priority",
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "YAxisCaption": "Category",
+            "EnableChartReport": true,
+            "SubGroupByField": "Category",
+            "GroupDisplay": "stacked",
+            "XAxisCaption": "",
+            "SortByField": "",
+            "Filter": {
+                "panelFilter": {
+                    "filterMode": "normal",
+                    "filter": {
+                        "rExpression": {
+                            "value": "true",
+                            "operator": "LITERAL"
+                        },
+                        "lExpression": {
+                            "value": "Active",
+                            "operator": "PROPERTY"
+                        },
+                        "operator": "EQUALS"
+                    }
+                }
+            },
+            "SubSortByField": "",
+            "Entity": "Incident"
+        },
+        "id": "5433990a0cf21608d36c1f7b"
+    },
+    {
+        "ChartType": "column",
+        "ImageUrl": "reports-icon-chart",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "10071",
+        "Name": "aaaaaaaa",
+        "Description": "a_Cloned Report",
+        "Properties": {
+            "Columns": ["Id", "DisplayLabel", "Priority", "PhaseId", "Status", "Category", "RegisteredForActualService"],
+            "GroupByField": "Priority",
+            "dashboardSource": "warehouse",
+            "EnableTabularReport": true,
+            "Operation": "Count",
+            "OperationField": "",
+            "YAxisCaption": "Category",
+            "EnableChartReport": true,
+            "SubGroupByField": "Category",
+            "GroupDisplay": "stacked",
+            "XAxisCaption": "",
+            "SortByField": "",
+            "Filter": {
+                "panelFilter": {
+                    "filterMode": "normal",
+                    "filter": {
+                        "rExpression": {
+                            "value": "true",
+                            "operator": "LITERAL"
+                        },
+                        "lExpression": {
+                            "value": "Active",
+                            "operator": "PROPERTY"
+                        },
+                        "operator": "EQUALS"
+                    }
+                }
+            },
+            "SubSortByField": "",
+            "Entity": "Incident"
+        },
+        "id": "543399e00cf24010f44244a0"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "of Infrastructure \u0026 peripheral per subtype",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "InfrastructurePeripheral",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "OR",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pInUse"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pInStock"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pPrepare"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "DisplayLabel", "SubType", "AssetModel", "PhaseId"],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "PhaseId",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "SubType",
+            "GroupDisplay": "stacked"
+        },
+        "id": "540307f00cf2172423053b54"
+    },
+    {
+        "ChartType": "stacked",
+        "ImageUrl": "reports-icon-stacked",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "System": "true",
+        "Name": "of device per subtype",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "Device",
+            "dashboardSource": "warehouse",
+            "Filter": {
+                "panelFilter": {
+                    "filter": {
+                        "operator": "OR",
+                        "filters": [
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pInStock"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pInUse"
+                                }
+                            },
+                            {
+                                "operator": "EQUALS",
+                                "lExpression": {
+                                    "operator": "PROPERTY",
+                                    "value": "PhaseId"
+                                },
+                                "rExpression": {
+                                    "operator": "LITERAL",
+                                    "value": "pPrepare"
+                                }
+                            }
+                        ]
+                    },
+                    "filterMode": "normal"
+                }
+            },
+            "Columns": ["Id", "DisplayLabel", "SubType", "OsType", "OsName", "Model", "VirtualDevice", "Environment", "PhaseId"],
+            "PieValueOption": "percent",
+            "OperationField": "",
+            "SubGroupByField": "PhaseId",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "SubType",
+            "GroupDisplay": "stacked"
+        },
+        "id": "540307f00cf2172423053b5e"
+    },
+    {
+        "ChartType": "pie",
+        "ImageUrl": "reports-icon-pie",
+        "ReportAccess": "public",
+        "ReportTypeId": "1",
+        "Owner": "13001",
+        "Name": "sanity test",
+        "Description": "test",
+        "Properties": {
+            "EnableTabularReport": true,
+            "EnableChartReport": true,
+            "Operation": "Count",
+            "Entity": "Request",
+            "dashboardSource": "warehouse",
+            "Filter": {},
+            "Columns": [],
+            "OperationField": "",
+            "SubGroupByField": "",
+            "SortByField": "",
+            "SubSortByField": "",
+            "GroupByField": "PhaseId"
+        },
+        "id": "53b9362d0cf234d1792ea2d6"
+    }
+], "totalCount": 89}
