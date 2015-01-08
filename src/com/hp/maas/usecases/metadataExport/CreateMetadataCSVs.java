@@ -21,10 +21,16 @@ public class CreateMetadataCSVs {
 
     private Server server;
     private File outputFolder;
+    private boolean excludeCustom = false;
 
-    public CreateMetadataCSVs(Server server, File outputFolder) {
+    public CreateMetadataCSVs(Server server, File outputFolder ) {
+        this(server, outputFolder,false);
+    }
+    public CreateMetadataCSVs(Server server, File outputFolder , boolean excludeCustom) {
         this.server = server;
         this.outputFolder = outputFolder;
+        this.excludeCustom = excludeCustom;
+
     }
 
     public void run(){
@@ -49,9 +55,9 @@ public class CreateMetadataCSVs {
             printer.printRecord("name",
                     "logicalType",
                     "localizedLabelKey",
+                    "targetType",
                     "domain",
                     "hidden",
-                    "reference",
                     "system",
                     "searchable",
                     "sortable",
@@ -65,13 +71,16 @@ public class CreateMetadataCSVs {
         }
 
         for (FieldDescriptor f : md.getFields()) {
+            if (excludeCustom && !f.isSystem()){
+                continue;
+            }
             try {
                 printer.printRecord(f.getName(),
                         f.getLogicalType(),
                         f.getLocalizedLabelKey(),
+                        f.getReference() == null? "" : f.getReference().getTargetType(),
                         f.getDomain(),
                         f.isHidden(),
-                        f.getReference() == null? "" : f.getReference().getTargetType(),
                         f.isSystem(),
                         f.isSearchable(),
                         f.isSortable(),
@@ -88,23 +97,26 @@ public class CreateMetadataCSVs {
             if (!"MANY2MANY".equals(r.getCardinality())){
                 continue;
             }
-            /*try {
+            if (excludeCustom && !r.getSystem()){
+                continue;
+            }
+            try {
                 printer.printRecord(r.getName(),
-                        r.get,
-                        f.getLocalizedLabelKey(),
-                        f.getDomain(),
-                        f.isHidden(),
-                        r.,
-                        f.isSystem(),
-                        f.isSearchable(),
-                        f.isSortable(),
-                        f.isTextSearchable(),
-                        f.isRequired(),
-                        f.isReadOnly(),
-                        f.isUnique());
+                        "MANY_2_MANY",
+                        r.getLocalized_label_key(),
+                        md.getName().equals(r.getSecond_endpoint_entity_name())? r.getFirst_endpoint_entity_name():r.getSecond_endpoint_entity_name(),
+                        "",
+                        "",
+                        r.getSystem(),
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "");
             } catch (IOException e) {
                 throw new RuntimeException(e);
-            }*/
+            }
         }
 
         try {

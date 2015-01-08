@@ -9,6 +9,7 @@ import com.hp.maas.jsons.forms.Form;
 import com.hp.maas.jsons.forms.FormField;
 import com.hp.maas.jsons.forms.FormParser;
 import com.hp.maas.jsons.forms.FormSection;
+import com.hp.maas.utils.executers.multiTenant.TenantFilter;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -22,8 +23,6 @@ import java.util.*;
  */
 public class FormsValidationFinder {
 
-    String serverUrl;
-    String ssoToken;
 
     File outputFolder;
     File globalLog;
@@ -32,10 +31,10 @@ public class FormsValidationFinder {
 
     List<Tenant> tenants;
     private boolean simulationMode;
+    private Server operationTenantServer;
 
-    public FormsValidationFinder(String serverUrl, String ssoToken, String outputFolderPath , String operatorTenantId , TenantFilter filter) {
-        this.serverUrl = serverUrl;
-        this.ssoToken = ssoToken;
+    public FormsValidationFinder(Server operationTenantServer, String outputFolderPath , String operatorTenantId , TenantFilter filter) {
+        this.operationTenantServer = operationTenantServer;
         init(outputFolderPath,operatorTenantId,filter);
     }
 
@@ -62,8 +61,7 @@ public class FormsValidationFinder {
 
     private void createTenantList(String operatorTenantId, TenantFilter tenantsFilter) {
 
-        Server server = new Server(serverUrl, operatorTenantId,ssoToken);
-        server.authenticate();
+        Server server = operationTenantServer.fork(operatorTenantId);
 
 
         List<Tenant> allTenants = server.getTenantManagementAPI().getAllTenants();
@@ -91,7 +89,7 @@ public class FormsValidationFinder {
         this.simulationMode = simulationMode;
         reportGlobal("Configuration: ");
         reportGlobal("{" +
-                "serverUrl='" + serverUrl + '\n' +
+                "serverUrl='" + operationTenantServer.getServerUrl() + '\n' +
                 ", outputFolder='" + outputFolder + '\n' +
                 ", tenants=" + tenants.size() +
                 "}\n");
@@ -123,8 +121,7 @@ public class FormsValidationFinder {
         tenantDir = new File(outputFolder.getAbsolutePath()+File.separator+tenant.getId());
         tenantLog = null;
 
-        Server server = new Server(serverUrl, tenant.getId(),ssoToken);
-        server.authenticate();
+        Server server = operationTenantServer.fork(tenant.getId());
 
         server.getMetadataAPI().loadAllFromServer();
 

@@ -25,14 +25,18 @@ public class InvalidSectionHeaderFormError implements FormError {
     @Override
     public void fix(FormsTransaction tx) {
 
-        String resourceKey = form.getEntityType()+"."+form.getName().replaceAll(" ","")+"."+toUpperCamelCase(section.getHeader())+".customization";
-        tx.createRB(resourceKey,section.getHeader());
+        String header = section.getHeader();
+        if (header == null){
+            header = section.getName();
+        }
+        String resourceKey = form.getEntityType()+"."+form.getName().replaceAll(" ","")+"."+toUpperCamelCase(header)+".customization";
+        tx.createRB(resourceKey, header);
 
 
         String name = section.getName();
 
         if (name == null){
-            name = toUpperCamelCase(section.getHeader());
+            name = toUpperCamelCase(header);
         }
         form.updateSectionLabels(section,resourceKey,name);
 

@@ -1,4 +1,4 @@
-package com.hp.maas.usecases.forms;
+package com.hp.maas.utils.executers.multiTenant;
 
 import com.hp.maas.apis.model.tenatManagment.Tenant;
 

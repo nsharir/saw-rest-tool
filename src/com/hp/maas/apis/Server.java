@@ -35,6 +35,7 @@ public class Server {
     private ResourceBundleAPI resourceBundleAPI;
     private TenantManagementAPI tenantManagementAPI;
     private UserManagementAPI userManagementAPI;
+    private GenericRestAPI genericRestAPI;
 
     public Server(String hostUrl, String name, String password, String tenant) {
         this.hostUrl = hostUrl;
@@ -47,6 +48,12 @@ public class Server {
         this.hostUrl = hostUrl;
         this.tenant = tenant;
         this.token = token;
+    }
+
+    public Server fork(String tenatId){
+        Server server = new Server(hostUrl, tenatId,getToken());
+        server.authenticate();
+        return server;
     }
 
     public void authenticate(){
@@ -62,6 +69,7 @@ public class Server {
         resourceBundleAPI = new ResourceBundleAPI(this);
         tenantManagementAPI = new TenantManagementAPI(this);
         userManagementAPI = new UserManagementAPI(this);
+        genericRestAPI = new GenericRestAPI(this);
 
         Log.log("Auth Token: "+ token);
 
@@ -175,7 +183,15 @@ public class Server {
         return userManagementAPI;
     }
 
+    public GenericRestAPI getGenericRestAPI() {
+        return genericRestAPI;
+    }
+
     public String getTenantId() {
         return tenant;
+    }
+
+    public String getServerUrl() {
+        return hostUrl;
     }
 }
