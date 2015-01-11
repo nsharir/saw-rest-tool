@@ -20,14 +20,17 @@ public class MultiTenantExecutor {
 
     private ArrayList<Tenant> tenants;
 
-    public MultiTenantExecutor(String hostUrl, String operatorUser, String operatorPwd , String operatorTenantId,TenantFilter filter, Reporter reporter) {
-        this.operatorTenantId = operatorTenantId;
+    public MultiTenantExecutor(Server masterServer,TenantFilter filter, Reporter reporter) {
+        this.masterServer = masterServer;
+        masterServer.authenticate();
+        this.operatorTenantId = masterServer.getTenantId();
         this.filter = filter;
         this.reporter = reporter;
-
-        masterServer = new Server(hostUrl, operatorUser, operatorPwd,operatorTenantId);
-        masterServer.authenticate();
         createTenantList(filter);
+    }
+
+    public MultiTenantExecutor(String hostUrl, String operatorUser, String operatorPwd , String operatorTenantId,TenantFilter filter, Reporter reporter) {
+        this (new Server(hostUrl, operatorUser, operatorPwd,operatorTenantId),filter, reporter);
     }
 
     private void createTenantList(TenantFilter tenantsFilter) {
