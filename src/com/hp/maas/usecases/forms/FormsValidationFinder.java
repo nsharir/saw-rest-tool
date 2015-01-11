@@ -33,9 +33,9 @@ public class FormsValidationFinder {
     private boolean simulationMode;
     private Server operationTenantServer;
 
-    public FormsValidationFinder(Server operationTenantServer, String outputFolderPath , String operatorTenantId , TenantFilter filter) {
+    public FormsValidationFinder(Server operationTenantServer, String outputFolderPath , TenantFilter filter) {
         this.operationTenantServer = operationTenantServer;
-        init(outputFolderPath,operatorTenantId,filter);
+        init(outputFolderPath,operationTenantServer.getTenantId(),filter);
     }
 
 
