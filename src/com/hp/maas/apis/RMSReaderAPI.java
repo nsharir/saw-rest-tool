@@ -43,7 +43,7 @@ public class RMSReaderAPI {
         if (filter != null){
             uri += "&filter="+filter.getFilterString();
         }
-        int size = 1000;
+        int size = 2000;
 
         if (pageSize != null){
             size = pageSize;

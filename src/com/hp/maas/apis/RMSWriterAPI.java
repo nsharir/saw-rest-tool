@@ -119,8 +119,6 @@ public class RMSWriterAPI {
 
             JSONObject json = new JSONObject(resultsJson);
 
-            System.out.println(json.toString(1));
-
             String status = json.getString(COMPLETION_STATUS);
             if (!STATUS_OK.equals(status)){
                 throw new RuntimeException("ERROR updating resource: "+connection.getURL()+". resource:\n"+resource);
