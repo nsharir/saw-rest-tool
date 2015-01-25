@@ -23,6 +23,11 @@ public class FilterBuilder  {
         return this;
     }
 
+    public FilterBuilder or(FilterElement filterElement){
+        query.append(" or ").append(filterElement.getFilterSyntax());
+        return this;
+    }
+
     public String getFilterString (){
         try {
             return URLEncoder.encode(query.toString(),"UTF-8");

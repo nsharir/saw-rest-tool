@@ -1,11 +1,10 @@
-package com.hp.maas.tools.cutomers;
+package com.hp.maas.tools.customers;
 
 import com.hp.maas.apis.Server;
 import com.hp.maas.apis.model.entity.EntityInstance;
 import com.hp.maas.apis.model.query.FilterBuilder;
 import com.hp.maas.apis.model.query.SimpleFilterElement;
 import com.hp.maas.tools.DevProdCompare;
-import com.hp.maas.tools.DevProdCompareResult;
 
 import java.util.*;
 
