@@ -45,7 +45,7 @@ public class EntityReaderAPI {
         List<String> enrichedLayout = new ArrayList<String>();
         enrichedLayout.addAll(layout);
 
-        EntityTypeDescriptor md = server.getMetadataAPI().getEntityDescriptor(entityType);
+        /*EntityTypeDescriptor md = server.getMetadataAPI().getEntityDescriptor(entityType);
         IdentificationRules identificationRules = Configuration.getIdentificationRules();
 
         for (String field : layout) {
@@ -58,7 +58,7 @@ public class EntityReaderAPI {
                 }
 
             }
-        }
+        }*/
 
         String layoutStr = StringUtils.toCommaSeparatedString(enrichedLayout,false);
         String uri = "ems/" + entityType + "?layout=" + layoutStr;

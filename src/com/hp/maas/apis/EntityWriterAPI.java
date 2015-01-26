@@ -36,12 +36,12 @@ public class EntityWriterAPI {
     public EntityBulkResult insertEntities(List<EntityInstance> entities){
         HttpURLConnection connection = server.buildPostConnection("ems/bulk");
         EntityBulkResult bulkResult = bulkInvoke(entities, OPERATION_CREATE, connection);
-        if (bulkResult.getFailures().size() > 0){
+/*        if (bulkResult.getFailures().size() > 0){
             for (BulkResultEntry entry : bulkResult.getFailures()) {
                 Log.error("Failed to insert entity: "+entry);
             }
             throw new RuntimeException("Failed to run insert bulk..."+bulkResult.getFailures().size()+" out of "+entities.size()+" failed to be created");
-        }
+        }*/
         return bulkResult;
     }
 

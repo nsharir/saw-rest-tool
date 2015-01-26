@@ -15,7 +15,10 @@ public class BulkResultEntry {
     private EntityInstance entity;
 
      BulkResultEntry(EntityInstance entity , CompletionStatus completionStatus, String message) {
-        this.id = entity.getFieldValue("Id").toString();
+        Object obj = entity.getFieldValue("Id");
+        if (obj != null) {
+             this.id = obj.toString();
+        }
         this.completionStatus = completionStatus;
         this.message = message;
         this.entity = entity;

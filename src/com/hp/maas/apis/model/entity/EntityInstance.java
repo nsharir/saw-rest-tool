@@ -36,6 +36,10 @@ public class EntityInstance {
         return fields.get(fieldName);
     }
 
+    public boolean hasField(String fieldName){
+        return fields.get(fieldName) != null;
+    }
+
     public void setFieldValue(String fieldName, Object value){
          fields.put(fieldName,value);
     }
