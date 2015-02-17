@@ -18,7 +18,7 @@ public class EntityInstance {
     private Map<String,Object> fields;
     private Map<String,EntityInstance> relatedEntities = new HashMap<String, EntityInstance>();
 
-      EntityInstance(String type, Map<String, Object> fields, Map<String,EntityInstance> relatedEntities) {
+    public  EntityInstance(String type, Map<String, Object> fields, Map<String,EntityInstance> relatedEntities) {
         this.type = type;
         this.fields = new HashMap<String, Object>(fields);
         this.relatedEntities = relatedEntities;

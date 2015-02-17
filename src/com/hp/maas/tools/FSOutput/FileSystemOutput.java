@@ -41,11 +41,16 @@ public class FileSystemOutput {
     }
 
     public void dump (String context, String fileName , String data) throws IOException {
-        File folder = contextMap.get(context);
-        if (folder == null){
-            folder = new File(outputFolder.getAbsolutePath()+File.separator+toUpperCamelCase(context));
-            contextMap.put(context,folder);
-            folder.mkdirs();
+        File folder;
+        if (context != null) {
+            folder = contextMap.get(context);
+            if (folder == null) {
+                folder = new File(outputFolder.getAbsolutePath() + File.separator + toUpperCamelCase(context));
+                contextMap.put(context, folder);
+                folder.mkdirs();
+            }
+        }else{
+            folder = outputFolder.getAbsoluteFile();
         }
 
         File file = new File(folder.getAbsolutePath()+File.separator+toUpperCamelCase(fileName));

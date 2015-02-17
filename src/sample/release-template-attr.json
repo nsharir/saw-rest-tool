@@ -1,0 +1,38 @@
+{
+    "EntityType": "Release",
+    "NonApplicableAttributes" : [
+        "Active",
+        "Name",
+        "DisplayLabel",
+        "CloseTime",
+        "ClosedByPerson",
+        "BasedOnReleaseModel",
+        "RequestedByPerson",
+        "TasksInternalData",
+        "TasksExecutionPlanEvaluate",
+        "TasksExecutionPlanPlanAndDesign",
+        "TasksExecutionPlanBuildAndTest",
+        "TasksExecutionPlanApproveDeployment",
+        "TasksExecutionPlanDeploy",
+        "TasksExecutionPlanRemediate",
+        "TasksExecutionPlanELS",
+        "TasksExecutionPlanReview",
+        "CompletionCode",
+        "PhaseId",
+	    "ProcessId",
+        "ReviewResults",
+        "Urgency",
+        "ReleaseAttachments",
+        "UserOptions",
+        "UserOptionsName",
+        "ScheduledStartTime",
+        "ScheduledEndTime",
+        "ActualStartTime",
+        "ActualEndTime",
+        "LatestExecutionDate"
+    ],
+    "NonCopyAttributes" : [
+        "Justification",
+        "Urgency"
+    ]
+}

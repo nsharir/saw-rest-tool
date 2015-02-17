@@ -4,6 +4,7 @@ import com.hp.maas.apis.Server;
 import com.hp.maas.apis.model.tenatManagment.Tenant;
 import com.hp.maas.utils.executers.reporters.LogLevel;
 import com.hp.maas.utils.executers.reporters.Reporter;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,9 +60,10 @@ public class MultiTenantExecutor {
             reporter.report(LogLevel.INFO, "-----------------------------------------------------------------------------------------");
             try {
                 runTenant(t, cmd);
+                reporter.report(LogLevel.INFO, "Done executing tenant "+t);
             }catch(Throwable e){
                 reporter.report(LogLevel.ERROR, "Error while executing tenant "+t);
-                reporter.report(LogLevel.ERROR,e.toString());
+                reporter.report(LogLevel.ERROR, ExceptionUtils.getStackTrace(e));
             }
             reporter.report(LogLevel.INFO, "-----------------------------------------------------------------------------------------");;
         }
