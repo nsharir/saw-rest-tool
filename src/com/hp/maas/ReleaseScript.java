@@ -59,10 +59,11 @@ public class ReleaseScript {
         reporter = new Reporter() {
             @Override
             public void report(LogLevel level, String str) {
+                String log = "["+level.name()+"]"+str;
                 try {
-                    output.dump(null,"all.log",str);
+                    output.dump(null,"all.log",log);
                     if (level == LogLevel.ERROR){
-                        output.dump(null,"errors.log",str);
+                        output.dump(null,"errors.log",log);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
