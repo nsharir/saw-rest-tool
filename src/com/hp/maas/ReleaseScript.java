@@ -1,6 +1,7 @@
 package com.hp.maas;
 
 import com.hp.maas.apis.*;
+import com.hp.maas.apis.model.entity.BulkResultEntry;
 import com.hp.maas.apis.model.entity.EntityBulkResult;
 import com.hp.maas.apis.model.entity.EntityInstance;
 import com.hp.maas.apis.model.query.FilterBuilder;
@@ -49,21 +50,23 @@ public class ReleaseScript {
         TenantFilter filter = new TenantFilter() {
             @Override
             public boolean shouldRun(Tenant t) {
-                return true;
+                return "v3".equals(t.getVersion());
             }
         };
 
         final FileSystemOutput output = new FileSystemOutput(outputFolder);
 
-
+        final Reporter console = new ConsoleReporter(LogLevel.INFO);
         reporter = new Reporter() {
+
             @Override
             public void report(LogLevel level, String str) {
+                console.report(level, str);
                 String log = "["+level.name()+"]"+str;
                 try {
-                    output.dump(null,"all.log",log);
+                    output.dump(null,"all.log",log+"\n");
                     if (level == LogLevel.ERROR){
-                        output.dump(null,"errors.log",log);
+                        output.dump(null,"errors.log",log+"\n");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -71,7 +74,7 @@ public class ReleaseScript {
             }
         };
 
-        MultiTenantExecutor exe = new MultiTenantExecutor(url, operUserName, operPassword, operTenantID, filter,new ConsoleReporter());
+        MultiTenantExecutor exe = new MultiTenantExecutor(url, operUserName, operPassword, operTenantID, filter,reporter);
 
         exe.run(new TenantCommand() {
             @Override
@@ -122,7 +125,9 @@ public class ReleaseScript {
         if(!insertResult.isFailed()){
             reporter.report(LogLevel.INFO, "Succeeded to insert release approval plan to system");
         } else {
+            List<BulkResultEntry> failures = insertResult.getFailures();
             reporter.report(LogLevel.ERROR, "Failed to insert release approval plan to system");
+            reporter.report(LogLevel.ERROR, failures.toString());
         }
     }
 

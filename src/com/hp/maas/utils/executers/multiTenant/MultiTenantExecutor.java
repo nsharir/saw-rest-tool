@@ -56,7 +56,7 @@ public class MultiTenantExecutor {
 
         for (Tenant t : tenants) {
             current++;
-            reporter.report(LogLevel.INFO, "["+current+"/"+total+"]"+"Running tenant ["+t.getType()+"/"+t.getId()+"/"+t.getTenantName()+"]...");
+            reporter.report(LogLevel.INFO, "["+current+"/"+total+"]"+"Running tenant ["+t.getType()+"/"+t.getId()+"/"+t.getTenantName()+"/"+t.getVersion()+"]...");
             reporter.report(LogLevel.INFO, "-----------------------------------------------------------------------------------------");
             try {
                 runTenant(t, cmd);
