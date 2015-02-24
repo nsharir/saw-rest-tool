@@ -21,18 +21,18 @@ import com.hp.maas.utils.executers.reporters.LogLevel;
 public class SLaMain {
 
 
-    public static final String PROD_OPERATOR_PASSWORD = "*********************";
+    public static final String PROD_OPERATOR_PASSWORD = "*********";
 
 
 
     public static void main(String[] args) throws Exception{
-        SLADefaultsReporter reporter = new SLADefaultsReporter("C:\\temp\\SLA","defaultSla_ast");
+        SLADefaultsReporter reporter = new SLADefaultsReporter("C:\\temp\\SLA","multi_service_austin");
         MultiTenantExecutor exe = new MultiTenantExecutor(astOper(),new TenantFilterAllTenants(), reporter);
-        exe.run(new FindDefaultSLAs());
+        exe.run(new FindManyServices());
 
-        SLADefaultsReporter reporter_multi = new SLADefaultsReporter("C:\\temp\\SLA","multi_service_austin");
-        MultiTenantExecutor exeMulti = new MultiTenantExecutor(astOper(),new TenantFilterAllTenants(), reporter_multi);
-        exeMulti.run(new FindManyServices());
+       /* SLADefaultsReporter reporter_multi = new SLADefaultsReporter("C:\\temp\\SLA","multi_service_lon");
+        MultiTenantExecutor exeMulti = new MultiTenantExecutor(londonOper(),new TenantFilterAllTenants(), reporter_multi);
+        exeMulti.run(new FindManyServices());*/
 
     }
 

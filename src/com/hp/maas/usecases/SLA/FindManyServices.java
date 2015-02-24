@@ -19,7 +19,7 @@ import java.util.Map;
 public class FindManyServices implements TenantCommand {
     @Override
     public void execute(Server server, Tenant tenant, Reporter reporter) {
-        JSONObject jsonObject = server.getGenericRestAPI().executeGet("ems/Agreement?layout=DisplayLabel,SLAisActive,AgreementRegisteredForService.Id,AgreementRegisteredForService.DisplayLabel&filter=SLAisActive%3dtrue%20and%20AgreementRegisteredForService[]&meta=AllowM2MRelationsLayout");
+        JSONObject jsonObject = server.getGenericRestAPI().executeGet("ems/Agreement?layout=DisplayLabel,SLAisActive,AgreementRegisteredForService.Id,AgreementRegisteredForService.DisplayLabel&filter=SLAisActive%3dtrue%20and%20AgreementRegisteredForService[]&meta=AllowM2MRelationsLayout&size=4000");
 //        System.out.println(jsonObject.toString());
 //        System.out.println("\n");
 
