@@ -4,8 +4,10 @@ import com.hp.maas.apis.Server;
 import com.hp.maas.tools.FSOutput.FileSystemOutput;
 import com.hp.maas.usecases.LocationEnumReferencesInMDCmd;
 import com.hp.maas.usecases.SLA.FileSystemReporter;
+import com.hp.maas.usecases.forms.FormsValidationFinder;
 import com.hp.maas.utils.executers.multiTenant.MultiTenantExecutor;
 import com.hp.maas.utils.executers.multiTenant.TenantFilterAllTenants;
+import com.hp.maas.utils.executers.reporters.ConsoleReporter;
 import com.hp.maas.utils.executers.reporters.LogLevel;
 import com.hp.maas.utils.executers.reporters.Reporter;
 
@@ -25,11 +27,18 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception{
-
-
+        FormsValidationFinder finder = new FormsValidationFinder(saas911Oper(),"C:\\temp\\_saas911",new TenantFilterAllTenants() );
+        finder.run();
 
     }
 
+
+
+    private static Server saas911Oper(){
+        Server saasOperator = new Server("https://MSALB007NNGX.saas.hp.com/", "saas.integration.user@hp.com", PROD_OPERATOR_PASSWORD, "480652646");
+        saasOperator.authenticate();
+        return saasOperator;
+    }
 
 
     private static Server stagingOper(){
