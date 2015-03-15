@@ -19,6 +19,7 @@ public class FieldDescriptor {
 
     private String domain;
     private String localizedLabelKey;
+    private String referenceName;
 
     private boolean system;
     private boolean searchable;
@@ -30,7 +31,7 @@ public class FieldDescriptor {
 
     private List<String> tags;
 
-    public FieldDescriptor(String name, String logicalType, boolean isHidden, EntityReferenceDescriptor reference, String domain, String localizedLabelKey, boolean system, boolean searchable, boolean sortable, boolean textSearchable, boolean required, boolean readOnly, boolean unique, List<String> tags) {
+    public FieldDescriptor(String name, String logicalType, boolean isHidden, EntityReferenceDescriptor reference, String domain, String localizedLabelKey, boolean system, boolean searchable, boolean sortable, boolean textSearchable, boolean required, boolean readOnly, boolean unique, List<String> tags,String referenceName) {
         this.name = name;
         this.logicalType = logicalType;
         this.hidden = isHidden;
@@ -45,7 +46,9 @@ public class FieldDescriptor {
         this.readOnly = readOnly;
         this.unique = unique;
         this.tags = tags;
+        this.referenceName = referenceName;
     }
+
 
     public EntityReferenceDescriptor getReference() {
         return reference;
@@ -105,6 +108,10 @@ public class FieldDescriptor {
 
     public List<String> getTags() {
         return tags;
+    }
+
+    public String getReferenceName() {
+        return referenceName;
     }
 
     @Override

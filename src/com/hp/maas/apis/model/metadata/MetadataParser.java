@@ -18,6 +18,7 @@ public class MetadataParser {
 
 
     private static final String TYPE_NAME = "name";
+    private static final String DOMAIN = "domain";
     private static final String TYPE_PROPERTY_DESCRIPTORS = "property_descriptors";
     private static final String TYPE_RELATIONS_DESCRIPTORS = "relation_descriptors";
 
@@ -31,6 +32,7 @@ public class MetadataParser {
         JSONObject jsonObj = new JSONObject(jsonStr);
 
         String typeName = jsonObj.getString(TYPE_NAME);
+        String typeDomain = jsonObj.getString(DOMAIN);
 
         JSONArray propDescriptors = jsonObj.getJSONArray(TYPE_PROPERTY_DESCRIPTORS);
 
@@ -46,6 +48,10 @@ public class MetadataParser {
             String domain = prop.getString("domain");
             String localized_label_key = prop.getString("localized_label_key");
 
+            String referenceName = null;
+            if (prop.has("reference_name")) {
+                referenceName = prop.getString("reference_name");
+            }
             Boolean system = prop.getBoolean("system");
             Boolean searchable = prop.getBoolean("searchable");
             Boolean sortable = prop.getBoolean("sortable");
@@ -67,7 +73,7 @@ public class MetadataParser {
             EntityReferenceDescriptor referenceDescriptor = createReferenceDescriptor(prop, typeName);
 
 
-            FieldDescriptor fieldDescriptor = new FieldDescriptor(name,logicalType,isHidden,referenceDescriptor,domain,localized_label_key,system,searchable,sortable,text_searchable,required,readOnly,unique,tags);
+            FieldDescriptor fieldDescriptor = new FieldDescriptor(name,logicalType,isHidden,referenceDescriptor,domain,localized_label_key,system,searchable,sortable,text_searchable,required,readOnly,unique,tags,referenceName);
             fields.add(fieldDescriptor);
         }
 
@@ -91,7 +97,9 @@ public class MetadataParser {
         }
 
 
-        return new EntityTypeDescriptor(typeName,fields,relations);
+        EntityTypeDescriptor entityTypeDescriptor = new EntityTypeDescriptor(typeName, fields, relations);
+        entityTypeDescriptor.setDomain(typeDomain);
+        return entityTypeDescriptor;
     }
 
     private static  EntityReferenceDescriptor createReferenceDescriptor(JSONObject property, String type){

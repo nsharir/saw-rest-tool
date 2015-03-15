@@ -1,15 +1,13 @@
 package com.hp.maas;
 
 import com.hp.maas.apis.Server;
+import com.hp.maas.tools.FSOutput.FileSystemOutput;
+import com.hp.maas.usecases.SLA.FileSystemReporter;
 import com.hp.maas.usecases.SLA.FindDefaultSLAs;
 import com.hp.maas.usecases.SLA.FindManyServices;
-import com.hp.maas.usecases.SLA.SLADefaultsReporter;
-import com.hp.maas.usecases.data.DataMultiplier;
+import com.hp.maas.usecases.SLA.FindWorkflowsWithSLA;
 import com.hp.maas.utils.executers.multiTenant.MultiTenantExecutor;
-import com.hp.maas.utils.executers.multiTenant.SingleTenantExecutor;
 import com.hp.maas.utils.executers.multiTenant.TenantFilterAllTenants;
-import com.hp.maas.utils.executers.reporters.ConsoleReporter;
-import com.hp.maas.utils.executers.reporters.LogLevel;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,18 +19,51 @@ import com.hp.maas.utils.executers.reporters.LogLevel;
 public class SLaMain {
 
 
-    public static final String PROD_OPERATOR_PASSWORD = "*********";
+    public static final String PROD_OPERATOR_PASSWORD = "----------";
 
 
 
     public static void main(String[] args) throws Exception{
-        SLADefaultsReporter reporter = new SLADefaultsReporter("C:\\temp\\SLA","multi_service_austin");
-        MultiTenantExecutor exe = new MultiTenantExecutor(astOper(),new TenantFilterAllTenants(), reporter);
+        FileSystemReporter reporter;
+        MultiTenantExecutor exe;
+
+
+        FileSystemOutput out = new FileSystemOutput("C:\\temp\\SLA");
+
+        reporter = new FileSystemReporter(out,"multi_service_austin");
+        exe = new MultiTenantExecutor(astOper(),new TenantFilterAllTenants(), reporter);
         exe.run(new FindManyServices());
 
-       /* SLADefaultsReporter reporter_multi = new SLADefaultsReporter("C:\\temp\\SLA","multi_service_lon");
-        MultiTenantExecutor exeMulti = new MultiTenantExecutor(londonOper(),new TenantFilterAllTenants(), reporter_multi);
-        exeMulti.run(new FindManyServices());*/
+        reporter = new FileSystemReporter(out,"multi_service_london");
+        exe = new MultiTenantExecutor(londonOper(),new TenantFilterAllTenants(), reporter);
+        exe.run(new FindManyServices());
+
+
+        reporter = new FileSystemReporter(out,"multi_defaults_austin");
+        exe = new MultiTenantExecutor(astOper(),new TenantFilterAllTenants(), reporter);
+        exe.run(new FindDefaultSLAs());
+
+        reporter = new FileSystemReporter(out,"multi_defaults_london");
+        exe = new MultiTenantExecutor(londonOper(),new TenantFilterAllTenants(), reporter);
+        exe.run(new FindDefaultSLAs());
+
+        reporter = new FileSystemReporter(out,"sla_workflows_london");
+        exe = new MultiTenantExecutor(londonOper(),new TenantFilterAllTenants(), reporter);
+        exe.run(new FindWorkflowsWithSLA(out));
+
+        reporter = new FileSystemReporter(out,"sla_workflows_austin");
+        exe = new MultiTenantExecutor( astOper(),new TenantFilterAllTenants(), reporter);
+        exe.run(new FindWorkflowsWithSLA(out));
+
+
+
+        reporter = new FileSystemReporter(out,"sla_workflows_austin");
+        exe = new MultiTenantExecutor( astOper(),new TenantFilterAllTenants(), reporter);
+        exe.run(new FindWorkflowsWithSLA(out));
+
+
+
+
 
     }
 

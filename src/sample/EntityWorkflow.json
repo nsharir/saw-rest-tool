@@ -1,0 +1,77 @@
+{
+    "id": "52c959f80cf23c1ed8251099",
+    "IsReadOnly": false,
+    "EntityType": "EntitlementRule",
+    "Processes": [{
+        "Metaphases": [{
+            "id": "New",
+            "IsReadOnly": false,
+            "DisplayLabelBundleKey": "EntitlementRuleWorkflow.process.normal.metaphase.new.displayLabel",
+            "EventHandlers": {
+                "DevPreEventHandlers": {},
+                "EventHandlers": {},
+                "DevPostEventHandlers": {}
+            }
+        }],
+        "id": "normal",
+        "Phases": [{
+            "MetaphaseId": "New",
+            "id": "New",
+            "IsReadOnly": false,
+            "DisplayLabelBundleKey": "EntitlementRuleWorkflow.process.normal.phase.new.displayLabel",
+            "EventHandlers": {
+                "DevPreEventHandlers": {},
+                "EventHandlers": {},
+                "DevPostEventHandlers": {}
+            }
+        }],
+        "IsReadOnly": false,
+        "FirstPhaseId": "New",
+        "DisplayLabelBundleKey": "EntitlementRuleWorkflow.process.normal.displayLabel",
+        "EventHandlers": {
+            "DevPreEventHandlers": {},
+            "EventHandlers": {
+                "ON_DELETE": [{
+                    "Enabled": true,
+                    "RuleType": "action",
+                    "RuleId": "deleteRmsWithEntitlementRule"
+                }],
+                "AFTER_COMMIT": [{
+                    "Enabled": true,
+                    "RuleType": "action",
+                    "RuleId": "updateRmsWithEntitlementRule"
+                }]
+            },
+            "DevPostEventHandlers": {}
+        },
+        "Transitions": [],
+        "ProcessSelectionFieldValues": []
+    }],
+    "EventHandlers": {
+        "DevPreEventHandlers": {},
+        "EventHandlers": {},
+        "DevPostEventHandlers": {}
+    },
+    "WorkflowStructureVersion": "v201403",
+    "DefaultProcessId": "normal",
+    "RuleDefinitions": [
+        {
+            "id": "updateRmsWithEntitlementRule",
+            "Parameters": [{
+                "Name": "operation",
+                "Value": "Update"
+            }],
+            "Type": "action",
+            "TemplateId": "syncRmsWithEntitlementRule"
+        },
+        {
+            "id": "deleteRmsWithEntitlementRule",
+            "Parameters": [{
+                "Name": "operation",
+                "Value": "Delete"
+            }],
+            "Type": "action",
+            "TemplateId": "syncRmsWithEntitlementRule"
+        }
+    ]
+}

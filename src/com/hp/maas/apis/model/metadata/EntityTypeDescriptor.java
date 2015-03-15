@@ -20,6 +20,7 @@ public class EntityTypeDescriptor {
     private List<RelationDescriptor> relations;
     private Map<String,RelationDescriptor> relationsMap;
     private String identificationFieldName;
+    private String domain;
 
     EntityTypeDescriptor(String name, List<FieldDescriptor> fields , List<RelationDescriptor> relations){
         this.name = name;
@@ -53,6 +54,13 @@ public class EntityTypeDescriptor {
         return relationsMap.get(relationName);
     }
 
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
 
     public String getName() {
         return name;
