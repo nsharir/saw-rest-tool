@@ -9,12 +9,13 @@ import com.hp.maas.utils.executers.reporters.LogLevel;
 import com.hp.maas.utils.executers.reporters.Reporter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by sharir on 23/03/2015.
  */
-public class ReportStatistics implements TenantCommand {
+public abstract class ReportStatistics implements TenantCommand {
 
 
     /*
@@ -33,14 +34,11 @@ public class ReportStatistics implements TenantCommand {
      */
 
 
-    String outputPath;
-    String month;
-    FileSystemOutput out;
+    private String month;
+    private List<ReportMeasurement> measurements = new ArrayList<ReportMeasurement>();
 
-    public ReportStatistics(String outputPath, String month) {
-        this.outputPath = outputPath;
+    public ReportStatistics(String month) {
         this.month = month;
-        this.out = new FileSystemOutput(outputPath);
     }
 
     @Override
@@ -48,14 +46,17 @@ public class ReportStatistics implements TenantCommand {
 
         List<RMSInstance> all = server.getRmsReaderAPI().readResources("ReportMeasurement"+month);
 
-
         for (RMSInstance instance : all) {
-            try {
-                out.dump(/*tenant.getId()*/"","ReportMeasurement_"+instance.getContent().getString("id")+".json",instance.getContent().toString(1));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+            ReportMeasurement measurement = ReportMeasurement.parse(instance.getContent());
+            measurements.add(measurement);
         }
 
+
     }
+
+    public void analyze(){
+        doAnalysis(measurements);
+    }
+    protected abstract void doAnalysis(List<ReportMeasurement> measurements);
 }
