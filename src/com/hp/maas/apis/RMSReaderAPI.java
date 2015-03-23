@@ -29,36 +29,38 @@ public class RMSReaderAPI {
     }
 
     public List<RMSInstance> readResources(String resourceType){
-        return  readResources(resourceType, null,null);
+        return  readResources(resourceType, null);
     }
 
     public List<RMSInstance> readResources(String resourceType,FilterBuilder filter){
-        return  readResources(resourceType, filter,null);
+        return  readResourcesInternal(resourceType, filter, 1000, 0);
     }
 
-    public List<RMSInstance> readResources(String resourceType , FilterBuilder filter , Integer pageSize){
+
+    private List<RMSInstance> readResourcesInternal(String resourceType , FilterBuilder filter , int pageSize, int skip){
 
         String uri = "rms/" + resourceType + "?";
 
         if (filter != null){
             uri += "&filter="+filter.getFilterString();
         }
-        int size = 10000;
 
-        if (pageSize != null){
-            size = pageSize;
+        int size = pageSize;
+        if (size > 1000){
+            size = 1000;
         }
-        uri+="&size="+size;
+        uri+="&size="+size+"&skip="+skip+"&meta=Count.Response";
 
         HttpURLConnection connection = server.buildConnection(uri);
 
         try {
             List<RMSInstance> results = new ArrayList<RMSInstance>();
 
+
             String resultsJson =  ConnectionUtils.connectAndGetResponse(connection);
 
-
             JSONObject json = new JSONObject(resultsJson);
+
 
             String status = json.getString(COMPLETION_STATUS);
             if (!STATUS_OK.equals(status)){
@@ -72,7 +74,14 @@ public class RMSReaderAPI {
                 results.add(new RMSInstance(resourceType,jsonArray.getJSONObject(i)));
             }
 
+            long totalCount = json.getLong("totalCount");
 
+            //we have all results - return
+            if ((pageSize + skip) >= totalCount ){
+                return results;
+            }
+
+            results.addAll(readResourcesInternal(resourceType, filter, pageSize, skip+pageSize));
 
             return results;
 
