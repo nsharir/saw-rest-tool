@@ -2,6 +2,7 @@ package com.hp.maas.utils.executers.multiTenant;
 
 import com.hp.maas.apis.Server;
 import com.hp.maas.apis.model.tenatManagment.Tenant;
+import com.hp.maas.utils.executers.reporters.ConsoleReporter;
 import com.hp.maas.utils.executers.reporters.LogLevel;
 import com.hp.maas.utils.executers.reporters.Reporter;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -21,6 +22,9 @@ public class MultiTenantExecutor {
 
     private ArrayList<Tenant> tenants;
 
+    public MultiTenantExecutor(Server masterServer,TenantFilter filter) {
+        this(masterServer, filter,new ConsoleReporter(LogLevel.INFO));
+    }
     public MultiTenantExecutor(Server masterServer,TenantFilter filter, Reporter reporter) {
         this.masterServer = masterServer;
         masterServer.authenticate();

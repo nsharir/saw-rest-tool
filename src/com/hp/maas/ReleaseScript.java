@@ -35,9 +35,9 @@ public class ReleaseScript {
 
     private static Reporter reporter;
 
-    public static void main(String[] args){
+    public static void main(Server server, String outputFolder){
 
-        if(args.length < 5) {
+        /*if(args.length < 5) {
             Log.error("Wrong parameters");
             return;
         }
@@ -46,7 +46,7 @@ public class ReleaseScript {
         String operPassword = args[2];
         String operTenantID = args[3];
         String outputFolder = args[4];
-
+*/
         TenantFilter filter = new TenantFilter() {
             @Override
             public boolean shouldRun(Tenant t) {
@@ -74,7 +74,7 @@ public class ReleaseScript {
             }
         };
 
-        MultiTenantExecutor exe = new MultiTenantExecutor(url, operUserName, operPassword, operTenantID, filter,reporter);
+        MultiTenantExecutor exe = new MultiTenantExecutor(server, filter,reporter);
 
         exe.run(new TenantCommand() {
             @Override

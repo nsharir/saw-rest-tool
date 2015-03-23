@@ -4,6 +4,11 @@ import com.hp.maas.configuration.ConfigurationParser;
 import com.hp.maas.configuration.IdentificationRules;
 import com.hp.maas.utils.ConnectionUtils;
 import com.hp.maas.utils.Log;
+import com.hp.maas.utils.executers.multiTenant.MultiTenantExecutor;
+import com.hp.maas.utils.executers.multiTenant.SingleTenantExecutor;
+import com.hp.maas.utils.executers.multiTenant.TenantCommand;
+import com.hp.maas.utils.executers.multiTenant.TenantFilter;
+import com.hp.maas.utils.executers.reporters.Reporter;
 
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
@@ -193,5 +198,25 @@ public class Server {
 
     public String getServerUrl() {
         return hostUrl;
+    }
+
+    public void executeCommand(TenantCommand tc,Reporter reporter){
+        SingleTenantExecutor executor = new SingleTenantExecutor(this,reporter);
+        executor.run(tc);
+    }
+
+    public void executeCommand(TenantCommand tc){
+        SingleTenantExecutor executor = new SingleTenantExecutor(this);
+        executor.run(tc);
+    }
+
+    public void executeCommandMultiTenant(TenantCommand tc, TenantFilter filter, Reporter reporter){
+        MultiTenantExecutor executor = new MultiTenantExecutor(this,filter,reporter);
+        executor.run(tc);
+    }
+
+    public void executeCommandMultiTenant(TenantCommand tc, TenantFilter filter){
+        MultiTenantExecutor executor = new MultiTenantExecutor(this,filter);
+        executor.run(tc);
     }
 }
