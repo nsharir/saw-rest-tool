@@ -21,14 +21,23 @@ public class ReportStatisticsAverage extends ReportStatistics {
             double exeTime = 0;
             double calcTime = 0;
 
+            int total = 0;
+
             for (ReportMeasurement reportMeasurement : reportMeasurements) {
-                exeTime = exeTime + (reportMeasurement.ExecutionDuration/reportMeasurements.size());
-                calcTime = calcTime + (reportMeasurement.CalculationDuration/reportMeasurements.size());
+                if (shouldBeIncluded(reportMeasurement)) {
+                    exeTime = exeTime + (reportMeasurement.ExecutionDuration);
+                    calcTime = calcTime + (reportMeasurement.CalculationDuration);
+                    total++;
+                }
             }
 
-            System.out.println("Total executions: "+reportMeasurements.size());
-            System.out.println("Average execution time: "+exeTime);
-            System.out.println("Average calculation time: "+calcTime);
+            System.out.println("Total executions: "+total);
+            System.out.println("Average execution time: "+(exeTime/total));
+            System.out.println("Average calculation time: "+(calcTime/total));
 
+    }
+
+    protected boolean shouldBeIncluded(ReportMeasurement reportMeasurement){
+        return true;
     }
 }
