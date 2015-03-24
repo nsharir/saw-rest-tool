@@ -22,12 +22,17 @@ public class ChartUtils {
     public static void openChartAsFile(JFreeChart chart) {
         try {
             File tsChart = File.createTempFile(System.currentTimeMillis() + "", ".png");
-            tsChart.deleteOnExit();
+            //tsChart.deleteOnExit();
             ChartUtilities.saveChartAsPNG(tsChart, chart, 1200, 500);
 
+            String [] commands = {
+                    "cmd.exe" , "/c", "start" , "\"DummyTitle\"", "\"" + tsChart.getAbsolutePath() + "\""
+            };
+            Process p = Runtime.getRuntime().exec(commands);
+            p.waitFor();
 
-            Runtime.getRuntime().exec("mspaint " + tsChart.getAbsolutePath());
-        } catch (IOException e) {
+//            Runtime.getRuntime().exec("mspaint " + tsChart.getAbsolutePath());
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
