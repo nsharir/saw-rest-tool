@@ -113,7 +113,7 @@ public class ReportsStatisticsUtils {
         dataset.addSeries(onlineSeries);
         dataset.addSeries(offlineSeries);
 
-        JFreeChart timeSeriesChart = ChartFactory.createTimeSeriesChart("Reports Calculations", "Time", "Calculations", dataset);
+        JFreeChart timeSeriesChart = ChartFactory.createTimeSeriesChart("Reports Calculations (Total reports:"+total+" ,Average time: "+((int)(exeTime / total))+"ms  )", "Time", "Calculations", dataset);
 
 
         ChartUtils.openChartAsFile(timeSeriesChart);

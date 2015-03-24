@@ -36,6 +36,8 @@ public class TenantsReportsGenerator {
 
         Map<ChartUtils.ClusteredChartEntry, Integer> counters = new HashMap<ChartUtils.ClusteredChartEntry, Integer>();
 
+        int active = 0;
+
         for (Tenant tenant : tenants) {
             ChartUtils.ClusteredChartEntry te = entryCreator.createEntry(tenant);
             Integer current = counters.get(te);
@@ -44,9 +46,12 @@ public class TenantsReportsGenerator {
             }
             current++;
             counters.put(te, current);
+            if ("Active".equals(tenant.getState())){
+                active++;
+            }
         }
 
-        JFreeChart chart = ChartUtils.generateClusteredStackChart(counters,"Tenants per version  - "+server.getServerUrl());
+        JFreeChart chart = ChartUtils.generateClusteredStackChart(counters,"Tenants per version  - "+server.getServerUrl()+" ("+active+" active tenants)");
 
         ChartUtils.openChartAsFile(chart);
     }
