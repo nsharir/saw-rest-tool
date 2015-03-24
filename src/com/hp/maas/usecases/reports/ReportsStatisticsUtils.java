@@ -10,6 +10,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.time.Millisecond;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -132,7 +133,10 @@ public class ReportsStatisticsUtils {
         File[] files = dir.listFiles();
         all = new ArrayList<ReportMeasurement>(files.length);
         for (File file : files) {
-            all.add(ReportMeasurement.parse(new JSONObject(FileUtils.readFileToString(file))));
+            JSONArray array = new JSONArray(FileUtils.readFileToString(file));
+            for (int i=0; i<array.length();i++) {
+                all.add(ReportMeasurement.parse(array.getJSONObject(i)));
+            }
         }
         return all;
     }
