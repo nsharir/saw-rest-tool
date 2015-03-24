@@ -1,14 +1,9 @@
 package com.hp.maas.usecases.reports;
 
-import com.hp.maas.apis.Server;
-import com.hp.maas.apis.model.rms.RMSInstance;
-import com.hp.maas.apis.model.tenatManagment.Tenant;
-import com.hp.maas.tools.FSOutput.FileSystemOutput;
-import com.hp.maas.utils.executers.multiTenant.TenantCommand;
-import com.hp.maas.utils.executers.reporters.Reporter;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,20 +11,23 @@ import java.util.List;
  */
 public  class ReportStatisticsDumper extends ReportStatistics {
 
-    private FileSystemOutput out;
 
+    private File dir;
 
-
-    public ReportStatisticsDumper(String outputPath, String month) {
-        super(month);
-        this.out = new FileSystemOutput(outputPath);
+    public ReportStatisticsDumper(String outputPath, String month, Long fromTime) {
+        super(month,fromTime);
+        this.dir = new File(outputPath);
+        if (!this.dir.exists() && !this.dir.isDirectory()){
+            throw new RuntimeException("Folder doesn't exist - "+outputPath);
+        }
     }
 
 
     protected void doAnalysis(List<ReportMeasurement> measurements){
         for (ReportMeasurement instance : measurements) {
             try {
-                out.dump(/*tenant.getId()*/"","ReportMeasurement_"+instance.originalJSON.getString("id")+".json",instance.originalJSON.toString(1));
+                String fileName = dir.getAbsolutePath()+File.separator+"ReportMeasurement_" + instance.originalJSON.getString("id") + ".json";
+                FileUtils.writeStringToFile(new File(fileName), instance.originalJSON.toString(1));
             } catch (IOException e) {
                 e.printStackTrace();
             }

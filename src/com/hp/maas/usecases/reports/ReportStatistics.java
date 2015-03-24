@@ -1,6 +1,9 @@
 package com.hp.maas.usecases.reports;
 
 import com.hp.maas.apis.Server;
+import com.hp.maas.apis.model.query.APISyntaxFilterElement;
+import com.hp.maas.apis.model.query.FilterBuilder;
+import com.hp.maas.apis.model.query.SimpleFilterElement;
 import com.hp.maas.apis.model.rms.RMSInstance;
 import com.hp.maas.apis.model.tenatManagment.Tenant;
 import com.hp.maas.tools.FSOutput.FileSystemOutput;
@@ -35,16 +38,25 @@ public abstract class ReportStatistics implements TenantCommand {
 
 
     private String month;
+    private Long fromTime;
     private List<ReportMeasurement> measurements = new ArrayList<ReportMeasurement>();
 
-    public ReportStatistics(String month) {
+    public ReportStatistics(String month, Long fromTime) {
         this.month = month;
+        this.fromTime = fromTime;
     }
 
     @Override
     public void execute(Server server, Tenant tenant, Reporter reporter) {
 
-        List<RMSInstance> all = server.getRmsReaderAPI().readResources("ReportMeasurement"+month);
+
+        FilterBuilder filter = null;
+
+        if (fromTime != null){
+          filter = new FilterBuilder(new SimpleFilterElement("CalculationStartTime",">",fromTime));
+        }
+
+        List<RMSInstance> all = server.getRmsReaderAPI().readResources("ReportMeasurement"+month,filter);
 
         for (RMSInstance instance : all) {
 

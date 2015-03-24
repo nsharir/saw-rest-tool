@@ -1,9 +1,5 @@
 package com.hp.maas.usecases.reports;
 
-import com.hp.maas.tools.FSOutput.FileSystemOutput;
-import com.hp.maas.utils.executers.reporters.Reporter;
-
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -11,8 +7,8 @@ import java.util.List;
  */
 public class ReportStatisticsAverage extends ReportStatistics {
 
-    public ReportStatisticsAverage(String month) {
-        super(month);
+    public ReportStatisticsAverage(String month,Long fromTime) {
+        super(month, fromTime);
     }
 
 
