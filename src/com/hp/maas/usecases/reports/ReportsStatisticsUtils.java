@@ -68,45 +68,65 @@ public class ReportsStatisticsUtils {
         System.out.println("Average calculation time: " + (calcTime / total));
 
 
-        List<ReportMeasurement> open = new ArrayList<ReportMeasurement>();
-
-        Collections.sort(all, new Comparator<ReportMeasurement>() {
-            @Override
-            public int compare(ReportMeasurement o1, ReportMeasurement o2) {
-                Long startTime1 = o1.CalculationStartTime;
-                Long startTime2 = o2.CalculationStartTime;
-                return startTime1.compareTo(startTime2);
-            }
-        });
-
 
         TimeSeries onlineSeries = new TimeSeries("Online reports");
         TimeSeries offlineSeries = new TimeSeries("Offline reports");
 
+        if (all.isEmpty()){
+            System.out.println("No measurements found");
+            return;
+        }
+
+        int TIME_BUCKET_SIZE = 100;
+
+
+        Map<Long,Integer> timeBucketCountersOnline = new HashMap<Long, Integer>();
+        Map<Long,Integer> timeBucketCountersOffline = new HashMap<Long, Integer>();
 
         for (ReportMeasurement one : all) {
-            if (from == null || one.CalculationStartTime >= from) {
 
-                open.add(one);
-                List<ReportMeasurement> done = new ArrayList<ReportMeasurement>();
-                for (ReportMeasurement oneOpen : open) {
-                    if (one.CalculationStartTime > (oneOpen.CalculationStartTime + oneOpen.CalculationDuration)) {
-                        done.add(oneOpen);
-                    }
-                }
-                open.removeAll(done);
+            long startTime = one.CalculationStartTime;
+            long duration = one.CalculationDuration;
 
-                int offline = 0;
-
-                for (ReportMeasurement reportMeasurement : open) {
-                    if (reportMeasurement.Offline) {
-                        offline++;
-                    }
-                }
-                onlineSeries.addOrUpdate(new Millisecond(new Date(one.CalculationStartTime)), open.size() - offline);
-                offlineSeries.addOrUpdate(new Millisecond(new Date(one.CalculationStartTime)), offline);
+            if (from != null && from > startTime){
+                continue;
             }
 
+            int buckets = (int) (duration / TIME_BUCKET_SIZE);
+
+            if ((duration % TIME_BUCKET_SIZE) != 0){
+                buckets++;
+            }
+
+            long currentBucket = startTime - (startTime % TIME_BUCKET_SIZE);
+
+            Map<Long,Integer> timeBucketCounters ;
+
+            if (one.Offline){
+                timeBucketCounters = timeBucketCountersOffline;
+            }else{
+                timeBucketCounters = timeBucketCountersOnline;
+            }
+
+            for (int i=0;i<buckets;i++){
+                long key = currentBucket + i * TIME_BUCKET_SIZE;
+                Integer counter = timeBucketCounters.get(key);
+                if (counter == null){
+                    counter = 0;
+                }
+                counter++;
+                timeBucketCounters.put(key, counter);
+            }
+        }
+
+
+        for (Map.Entry<Long, Integer> entry : timeBucketCountersOffline.entrySet()) {
+            offlineSeries.add(new Millisecond(new Date(entry.getKey())), entry.getValue());
+        }
+
+
+        for (Map.Entry<Long, Integer> entry : timeBucketCountersOnline.entrySet()) {
+            onlineSeries.add(new Millisecond(new Date(entry.getKey())), entry.getValue());
         }
 
 
@@ -114,7 +134,7 @@ public class ReportsStatisticsUtils {
         dataset.addSeries(onlineSeries);
         dataset.addSeries(offlineSeries);
 
-        JFreeChart timeSeriesChart = ChartFactory.createTimeSeriesChart("Reports Calculations (Total reports:"+total+" ,Average time: "+((int)(exeTime / total))+"ms  )", "Time", "Calculations", dataset);
+        JFreeChart timeSeriesChart = ChartFactory.createTimeSeriesChart("Reports Calculations (Total reports:"+total+" ,Average time: "+((int)(calcTime / total))+"ms  )", "Time", "Calculations", dataset);
 
 
         ChartUtils.openChartAsFile(timeSeriesChart);
@@ -133,6 +153,9 @@ public class ReportsStatisticsUtils {
         File[] files = dir.listFiles();
         all = new ArrayList<ReportMeasurement>(files.length);
         for (File file : files) {
+            if (file.isDirectory()){
+                continue;
+            }
             JSONArray array = new JSONArray(FileUtils.readFileToString(file));
             for (int i=0; i<array.length();i++) {
                 all.add(ReportMeasurement.parse(array.getJSONObject(i)));
