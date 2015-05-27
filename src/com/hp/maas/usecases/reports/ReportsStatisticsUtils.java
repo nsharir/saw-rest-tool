@@ -47,7 +47,7 @@ public class ReportsStatisticsUtils {
         dumper.analyze();
     }
 
-    public static void generateTrendReport(String path, Long from) throws IOException {
+    public static void generateTrendReport(String path, Long from, boolean offline, boolean online) throws IOException {
         List<ReportMeasurement> all = readFromDisk(path);
 
         double exeTime = 0;
@@ -56,10 +56,12 @@ public class ReportsStatisticsUtils {
         int total = 0;
 
         for (ReportMeasurement reportMeasurement : all) {
-            if (from == null || reportMeasurement.CalculationStartTime >= from) {
-                exeTime = exeTime + (reportMeasurement.ExecutionDuration);
-                calcTime = calcTime + (reportMeasurement.CalculationDuration);
-                total++;
+            if ((reportMeasurement.Offline && offline) || (!reportMeasurement.Offline && online)) {
+                if (from == null || reportMeasurement.CalculationStartTime >= from) {
+                    exeTime = exeTime + (reportMeasurement.ExecutionDuration);
+                    calcTime = calcTime + (reportMeasurement.CalculationDuration);
+                    total++;
+                }
             }
         }
 
@@ -85,7 +87,11 @@ public class ReportsStatisticsUtils {
 
         for (ReportMeasurement one : all) {
 
-            long startTime = one.CalculationStartTime;
+            if ((one.Offline && !offline) || (!one.Offline && !online)) {
+                continue;
+            }
+
+                long startTime = one.CalculationStartTime;
             long duration = one.CalculationDuration;
 
             if (from != null && from > startTime){

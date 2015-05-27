@@ -1,0 +1,167 @@
+{
+    "id": "53a00e480cf2b5d07d71d36d",
+    "Owner": "279889",
+    "GridId": "saw-Request-entityGrid",
+    "FavoriteName": "grid_persistence_view",
+    "gridSettings": {
+        "sort": [],
+        "forceFitColumns": true,
+        "facetedSearch": {
+            "groupingFieldNames": ["PhaseId"],
+            "panelExpanded": true
+        },
+        "columnLayout": [
+            {
+                "minWidth": 120,
+                "width": 176,
+                "columnId": "SLT.TargetDate"
+            },
+            {
+                "minWidth": 50,
+                "width": 140,
+                "columnId": "Id"
+            },
+            {
+                "minWidth": 200,
+                "width": 557,
+                "columnId": "DisplayLabel"
+            },
+            {
+                "minWidth": 50,
+                "width": 142,
+                "columnId": "Priority"
+            },
+            {
+                "minWidth": 100,
+                "width": 231,
+                "columnId": "RequestedForPerson"
+            }
+        ],
+        "filter": {
+            "groupingFilter": {},
+            "panelFilter": {
+                "filterMode": "normal",
+                "filter": {
+                    "filters": [
+                        {
+                            "rExpression": {
+                                "value": "${current_user.Id}",
+                                "operator": "LITERAL"
+                            },
+                            "lExpression": {
+                                "value": "AssignedToPerson",
+                                "operator": "PROPERTY"
+                            },
+                            "operator": "EQUALS"
+                        },
+                        {
+                            "rExpression": {
+                                "value": "true",
+                                "operator": "LITERAL"
+                            },
+                            "lExpression": {
+                                "value": "Active",
+                                "operator": "PROPERTY"
+                            },
+                            "operator": "EQUALS"
+                        },
+                        {
+                            "filters": [
+                                {
+                                    "rExpression": {
+                                        "value": "Review",
+                                        "operator": "LITERAL"
+                                    },
+                                    "lExpression": {
+                                        "value": "PhaseId",
+                                        "operator": "PROPERTY"
+                                    },
+                                    "operator": "EQUALS"
+                                },
+                                {
+                                    "rExpression": {
+                                        "value": "Log",
+                                        "operator": "LITERAL"
+                                    },
+                                    "lExpression": {
+                                        "value": "PhaseId",
+                                        "operator": "PROPERTY"
+                                    },
+                                    "operator": "EQUALS"
+                                },
+                                {
+                                    "rExpression": {
+                                        "value": "FirstLineSupport",
+                                        "operator": "LITERAL"
+                                    },
+                                    "lExpression": {
+                                        "value": "PhaseId",
+                                        "operator": "PROPERTY"
+                                    },
+                                    "operator": "EQUALS"
+                                },
+                                {
+                                    "rExpression": {
+                                        "value": "Fulfill",
+                                        "operator": "LITERAL"
+                                    },
+                                    "lExpression": {
+                                        "value": "PhaseId",
+                                        "operator": "PROPERTY"
+                                    },
+                                    "operator": "EQUALS"
+                                },
+                                {
+                                    "rExpression": {
+                                        "value": "Escalate",
+                                        "operator": "LITERAL"
+                                    },
+                                    "lExpression": {
+                                        "value": "PhaseId",
+                                        "operator": "PROPERTY"
+                                    },
+                                    "operator": "EQUALS"
+                                },
+                                {
+                                    "rExpression": {
+                                        "value": "Abandon",
+                                        "operator": "LITERAL"
+                                    },
+                                    "lExpression": {
+                                        "value": "PhaseId",
+                                        "operator": "PROPERTY"
+                                    },
+                                    "operator": "EQUALS"
+                                },
+                                {
+                                    "rExpression": {
+                                        "value": "Classify",
+                                        "operator": "LITERAL"
+                                    },
+                                    "lExpression": {
+                                        "value": "PhaseId",
+                                        "operator": "PROPERTY"
+                                    },
+                                    "operator": "EQUALS"
+                                },
+                                {
+                                    "rExpression": {
+                                        "value": "Approve",
+                                        "operator": "LITERAL"
+                                    },
+                                    "lExpression": {
+                                        "value": "PhaseId",
+                                        "operator": "PROPERTY"
+                                    },
+                                    "operator": "EQUALS"
+                                }
+                            ],
+                            "operator": "OR"
+                        }
+                    ],
+                    "operator": "AND"
+                }
+            }
+        }
+    }
+}

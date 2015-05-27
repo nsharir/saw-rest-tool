@@ -35,7 +35,7 @@ public class ReleaseScript {
 
     private static Reporter reporter;
 
-    public static void main(Server server, String outputFolder){
+    public static void main(Server server, String outputFolder, TenantFilter optionalFilter){
 
         /*if(args.length < 5) {
             Log.error("Wrong parameters");
@@ -53,6 +53,10 @@ public class ReleaseScript {
                 return "v3".equals(t.getVersion());
             }
         };
+
+        if (optionalFilter != null){
+            filter = optionalFilter;
+        }
 
         final FileSystemOutput output = new FileSystemOutput(outputFolder);
 

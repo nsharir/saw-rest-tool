@@ -1,0 +1,293 @@
+{"completionStatus": "OK", "results": [
+    {
+        "entityTypeId": "41",
+        "entityType": "TimePeriodDefinition",
+        "entityId": "17356",
+        "emsHistoryChangeType": "UPDATE_ENTITY",
+        "changeProperties": {
+            "SchedulingPolicy": {
+                "newValue": "BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nDTSTART:20140917T090000Z\r\nDTEND:20140917T173000Z\r\nSUMMARY:Untitled rule 1\r\nRRULE:FREQ\u003dWEEKLY;UNTIL\u003d20170917T235959Z;INTERVAL\u003d1;BYDAY\u003dMO,TU,WE,TH,FR\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n",
+                "oldValue": "BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nDTSTART:20140917T090000Z\r\nDTEND:20140917T173500Z\r\nSUMMARY:Untitled rule 1\r\nRRULE:FREQ\u003dWEEKLY;UNTIL\u003d20170917T235959Z;INTERVAL\u003d1;BYDAY\u003dMO,TU,WE,TH,FR\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n"
+            },
+            "LastUpdateTime": {
+                "newValue": 1428639808877,
+                "oldValue": 1428639800238
+            }
+        },
+        "time": 1428639808877,
+        "auditType": "UPDATE_ENTITY",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "10010",
+        "actUserName": "e1248cc3eb2f451eb3b180d14e56a5e8",
+        "sourceIp": "108.72.6.219",
+        "destIp": "10.10.220.187"
+    },
+    {
+        "entityTypeId": "41",
+        "entityType": "TimePeriodDefinition",
+        "entityId": "17356",
+        "emsHistoryChangeType": "UPDATE_ENTITY",
+        "changeProperties": {
+            "SchedulingPolicy": {
+                "newValue": "BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nDTSTART:20140917T090000Z\r\nDTEND:20140917T173500Z\r\nSUMMARY:Untitled rule 1\r\nRRULE:FREQ\u003dWEEKLY;UNTIL\u003d20170917T235959Z;INTERVAL\u003d1;BYDAY\u003dMO,TU,WE,TH,FR\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n",
+                "oldValue": "BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nDTSTART:20140917T090000Z\r\nDTEND:20140917T173000Z\r\nSUMMARY:Untitled rule 1\r\nRRULE:FREQ\u003dWEEKLY;UNTIL\u003d20170917T235959Z;INTERVAL\u003d1;BYDAY\u003dMO,TU,WE,TH,FR\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n"
+            },
+            "LastUpdateTime": {
+                "newValue": 1428639800238,
+                "oldValue": 1426540207833
+            }
+        },
+        "time": 1428639800238,
+        "auditType": "UPDATE_ENTITY",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "10010",
+        "actUserName": "e1248cc3eb2f451eb3b180d14e56a5e8",
+        "sourceIp": "108.72.6.219",
+        "destIp": "10.10.220.186"
+    },
+    {
+        "entityTypeId": "41",
+        "entityType": "TimePeriodDefinition",
+        "entityId": "17356",
+        "emsHistoryChangeType": "UPDATE_ENTITY",
+        "changeProperties": {
+            "SchedulingPolicy": {
+                "newValue": "BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nDTSTART:20140917T090000Z\r\nDTEND:20140917T173000Z\r\nSUMMARY:Untitled rule 1\r\nRRULE:FREQ\u003dWEEKLY;UNTIL\u003d20170917T235959Z;INTERVAL\u003d1;BYDAY\u003dMO,TU,WE,TH,FR\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n",
+                "oldValue": "BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nDTSTART:20140917T090000Z\r\nDTEND:20140917T173000Z\r\nSUMMARY:Untitled rule 1\r\nRRULE:FREQ\u003dWEEKLY;UNTIL\u003d20150917T235959Z;INTERVAL\u003d1;BYDAY\u003dMO,TU,WE,TH,FR\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n"
+            },
+            "LastUpdateTime": {
+                "newValue": 1426540207833,
+                "oldValue": 1410950786800
+            }
+        },
+        "time": 1426540207833,
+        "auditType": "UPDATE_ENTITY",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "userName": "saas.integration.user@hp.com",
+        "actUserId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "actUserName": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "sourceIp": "109.186.166.149",
+        "destIp": "10.10.220.187"
+    },
+    {
+        "entityTypeId": "3",
+        "entityType": "TargetDefinition",
+        "entityId": "17356",
+        "relatedEntityId": "17617",
+        "relationshipName": "WorkScheduleBelongsToTargetDefinition",
+        "emsHistoryChangeType": "ADD_RELATION",
+        "changeProperties": {},
+        "time": 1410951432165,
+        "auditType": "ADD_RELATION",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "actUserName": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "sourceIp": "213.233.148.12",
+        "destIp": "10.10.220.186"
+    },
+    {
+        "entityTypeId": "3",
+        "entityType": "TargetDefinition",
+        "entityId": "17356",
+        "relatedEntityId": "17614",
+        "relationshipName": "WorkScheduleBelongsToTargetDefinition",
+        "emsHistoryChangeType": "ADD_RELATION",
+        "changeProperties": {},
+        "time": 1410951371930,
+        "auditType": "ADD_RELATION",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "actUserName": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "sourceIp": "213.233.148.12",
+        "destIp": "10.10.220.186"
+    },
+    {
+        "entityTypeId": "3",
+        "entityType": "TargetDefinition",
+        "entityId": "17356",
+        "relatedEntityId": "17612",
+        "relationshipName": "WorkScheduleBelongsToTargetDefinition",
+        "emsHistoryChangeType": "ADD_RELATION",
+        "changeProperties": {},
+        "time": 1410951334500,
+        "auditType": "ADD_RELATION",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "actUserName": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "sourceIp": "213.233.148.12",
+        "destIp": "10.10.220.186"
+    },
+    {
+        "entityTypeId": "3",
+        "entityType": "TargetDefinition",
+        "entityId": "17356",
+        "relatedEntityId": "17611",
+        "relationshipName": "WorkScheduleBelongsToTargetDefinition",
+        "emsHistoryChangeType": "ADD_RELATION",
+        "changeProperties": {},
+        "time": 1410951277535,
+        "auditType": "ADD_RELATION",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "actUserName": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "sourceIp": "213.233.148.12",
+        "destIp": "10.10.220.186"
+    },
+    {
+        "entityTypeId": "3",
+        "entityType": "TargetDefinition",
+        "entityId": "17356",
+        "relatedEntityId": "17610",
+        "relationshipName": "WorkScheduleBelongsToTargetDefinition",
+        "emsHistoryChangeType": "ADD_RELATION",
+        "changeProperties": {},
+        "time": 1410951240400,
+        "auditType": "ADD_RELATION",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "actUserName": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "sourceIp": "213.233.148.12",
+        "destIp": "10.10.220.186"
+    },
+    {
+        "entityTypeId": "3",
+        "entityType": "TargetDefinition",
+        "entityId": "17356",
+        "relatedEntityId": "17607",
+        "relationshipName": "WorkScheduleBelongsToTargetDefinition",
+        "emsHistoryChangeType": "ADD_RELATION",
+        "changeProperties": {},
+        "time": 1410951126572,
+        "auditType": "ADD_RELATION",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "actUserName": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "sourceIp": "213.233.148.12",
+        "destIp": "10.10.220.186"
+    },
+    {
+        "entityTypeId": "41",
+        "entityType": "TimePeriodDefinition",
+        "entityId": "17356",
+        "emsHistoryChangeType": "UPDATE_ENTITY",
+        "changeProperties": {
+            "PhaseId": {
+                "newValue": "Active",
+                "oldValue": "Draft"
+            },
+            "LastUpdateTime": {
+                "newValue": 1410950786800,
+                "oldValue": 1410950198708
+            }
+        },
+        "time": 1410950786800,
+        "auditType": "UPDATE_ENTITY",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "actUserName": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "sourceIp": "213.233.148.12",
+        "destIp": "10.10.220.186"
+    },
+    {
+        "entityTypeId": "41",
+        "entityType": "TimePeriodDefinition",
+        "entityId": "17356",
+        "emsHistoryChangeType": "ADD_ENTITY",
+        "changeProperties": {
+            "OwnedByGroup": {
+                "newValue": "10819"
+            },
+            "Description": {
+                "newValue": "Time period for standard IBM business day"
+            },
+            "DisplayLabel": {
+                "newValue": "STD Business Day"
+            },
+            "EmsCreationTime": {
+                "newValue": 1410950198708
+            },
+            "PhaseId": {
+                "newValue": "Draft"
+            },
+            "ApplyToAll": {
+                "newValue": false
+            },
+            "TimePeriodType": {
+                "newValue": "WorkSchedule"
+            },
+            "Id": {
+                "newValue": "17356"
+            },
+            "SchedulingPolicy": {
+                "newValue": "BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nDTSTART:20140917T090000Z\r\nDTEND:20140917T173000Z\r\nSUMMARY:Untitled rule 1\r\nRRULE:FREQ\u003dWEEKLY;UNTIL\u003d20150917T235959Z;INTERVAL\u003d1;BYDAY\u003dMO,TU,WE,TH,FR\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n"
+            },
+            "ProcessId": {
+                "newValue": "generic"
+            },
+            "LastUpdateTime": {
+                "newValue": 1410950198738
+            }
+        },
+        "time": 1410950198738,
+        "auditType": "ADD_ENTITY",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "actUserName": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "sourceIp": "213.233.148.12",
+        "destIp": "10.10.220.186"
+    },
+    {
+        "entityTypeId": "41",
+        "entityType": "TimePeriodDefinition",
+        "entityId": "17356",
+        "relatedEntityId": "10819",
+        "emsHistoryChangeType": "ADD_RELATION",
+        "changeProperties": {
+            "OwnedByGroup": {
+                "newValue": "10819"
+            }
+        },
+        "time": 1410950198738,
+        "auditType": "ADD_RELATION",
+        "component": "ems",
+        "outcome": "success",
+        "userId": "10010",
+        "userName": "padraig.farrell@aerlingus.com",
+        "actUserId": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "actUserName": "DA4DE9C3FE53B38BE040E00F9BC43C98",
+        "sourceIp": "213.233.148.12",
+        "destIp": "10.10.220.186"
+    }
+], "totalCount": 12}
