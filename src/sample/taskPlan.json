@@ -1,0 +1,140 @@
+{
+    "Transitions": [
+        {
+            "ToNodeId": "AutomaticTask_7e714d942bf80d",
+            "SwitchConditionValue": "${true}",
+            "Id": "Transition_7e714d9415c243",
+            "FromNodeId": "Switch_7e714d9415c242"
+        },
+        {
+            "ToNodeId": "NoOp_7e714d9417c4f3",
+            "SwitchConditionValue": "${false}",
+            "Id": "Transition_7e714d9415c244",
+            "FromNodeId": "Switch_7e714d9415c242"
+        },
+        {
+            "ToNodeId": "Switch_7e714d9415c242",
+            "Id": "Transition_7e714d9415c245",
+            "FromNodeId": "Start"
+        },
+        {
+            "ToNodeId": "NoOp_7e714d9417c4f3",
+            "Id": "Transition_173014d943f9c5e",
+            "FromNodeId": "AutomaticTask_7e714d942bf80d"
+        },
+        {
+            "ToNodeId": "NoOp_173014d9440c482",
+            "SwitchConditionValue": "${true}",
+            "Id": "Transition_173014d9440a554",
+            "FromNodeId": "Switch_173014d9440a553"
+        },
+        {
+            "ToNodeId": "NoOp_173014d9440c482",
+            "SwitchConditionValue": "${false}",
+            "Id": "Transition_173014d9440a555",
+            "FromNodeId": "Switch_173014d9440a553"
+        },
+        {
+            "ToNodeId": "Switch_173014d9440a553",
+            "Id": "Transition_173014d9440a556",
+            "FromNodeId": "NoOp_7e714d9417c4f3"
+        }
+    ],
+    "Nodes": [
+        {
+            "NodeType": "Start",
+            "Id": "Start"
+        },
+        {
+            "DisplayLabelKey": "CI Infra?",
+            "IsBoolean": true,
+            "SwitchOn": "${entity.UserOptions.DevlabCIInfra_c == true}",
+            "NodeType": "Switch",
+            "Id": "Switch_7e714d9415c242"
+        },
+        {
+            "NodeType": "NoOp",
+            "Id": "NoOp_7e714d9417c4f3"
+        },
+        {
+            "BusinessRules": [
+                {
+                    "Parameters": [
+                        {
+                            "Values": [
+                                {
+                                    "Name": "DisplayLabel",
+                                    "Value": "${entity.UserOptions.ChangeTitle_c}"
+                                },
+                                {
+                                    "Name": "Justification",
+                                    "Value": "${entity.UserOptions.ChangeJustification_c}"
+                                },
+                                {
+                                    "Name": "Description",
+                                    "Value": "${entity.UserOptions.ChangeDescription_c}"
+                                },
+                                {
+                                    "Name": "OwnedByPerson",
+                                    "Value": "${entity.RequestedByPerson}"
+                                },
+                                {
+                                    "Name": "NeedToUpdateLookup_c",
+                                    "Value": "${entity.UserOptions.RequieresLookupChange_c}"
+                                },
+                                {
+                                    "Name": "AffectsActualService",
+                                    "Value": "10019"
+                                },
+                                {
+                                    "Name": "RequiresInfraChange_c",
+                                    "Value": "${entity.UserOptions.RequiresInfraChange_c}"
+                                },
+                                {
+                                    "Name": "RndETA_c",
+                                    "Value": "${entity.UserOptions.RnDETA_c}"
+                                },
+                                {
+                                    "Name": "ChangeWorkflowType",
+                                    "Value": "NormalChange"
+                                },
+                                {
+                                    "Name": "BasedOnChangeModel",
+                                    "Value": "10316"
+                                }
+                            ],
+                            "Name": "entityValues"
+                        },
+                        {
+                            "Name": "associationType",
+                            "Value": "ChangeCausedByRequest"
+                        }
+                    ],
+                    "Type": "action",
+                    "TemplateId": "createEntityAndAssociation"
+                }
+            ],
+            "TaskProperties": {
+                "contextType": "Request",
+                "contextId": null,
+                "DisplayLabelKey": "Create CI Infra Change",
+                "ParentEntityType": "Request",
+                "PlatformTaskType": "AutomaticTask"
+            },
+            "NodeType": "Task",
+            "Id": "AutomaticTask_7e714d942bf80d"
+        },
+        {
+            "DisplayLabelKey": "Dev Infra?",
+            "IsBoolean": true,
+            "SwitchOn": "${entity.UserOptions.DevlabDevInfra_c== true}",
+            "NodeType": "Switch",
+            "Id": "Switch_173014d9440a553"
+        },
+        {
+            "NodeType": "NoOp",
+            "Id": "NoOp_173014d9440c482"
+        }
+    ]
+}
+

@@ -6,7 +6,8 @@ package com.hp.maas.tools.customers;
 public enum Tenants {
     ALDev ("733658382"),
     ALProd ("226830052"),
-    LondonRnd("787406283")
+    LondonRnd("787406283"),
+    SAW_CHANGE_MANAGEMENT("495177479")
     ;
 
     private String id;
