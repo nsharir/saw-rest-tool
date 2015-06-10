@@ -1,0 +1,60 @@
+{
+    "id": "53badfde0cf22a3529d8ae37",
+    "sections": [{
+        "resourceKey": "RequestDetailSection",
+        "name": "RequestDetails",
+        "domain": "saw",
+        "fields": [
+            {
+                "isOpposite": false,
+                "fieldSize": "LARGE",
+                "resourceKey": "serviceRequest.description",
+                "labelSize": 2,
+                "domain": "saw",
+                "modelAttribute": "Description",
+                "newLine": true,
+                "editorType": "RichEditor",
+                "size": 10
+            },
+            {
+                "fieldSize": "MEDIUM",
+                "labelSize": 2,
+                "modelAttribute": "Inbudget_c",
+                "editorType": "CheckBox",
+                "size": 4
+            },
+            {
+                "dataProvider": {"id": "ENTITY_DATA_PROVIDER"},
+                "fieldSize": "MEDIUM",
+                "labelSize": 2,
+                "domain": "saw",
+                "modelAttribute": "DeliveredToLocation",
+                "newLine": true,
+                "editorType": "EntityPicker",
+                "size": 4
+            },
+            {
+                "fieldSize": "MEDIUM",
+                "labelSize": 2,
+                "domain": "saw",
+                "modelAttribute": "AELManagerName_c",
+                "newLine": true,
+                "editorType": "TextBox",
+                "size": 4
+            },
+            {
+                "fieldSize": "MEDIUM",
+                "labelSize": 2,
+                "domain": "saw",
+                "modelAttribute": "AELRespCode_c",
+                "newLine": true,
+                "editorType": "NumericTextBox",
+                "size": 4
+            }
+        ],
+        "isHide": false,
+        "isOpen": true
+    }],
+    "name": "serviceRequest",
+    "entityType": "Request"
+}
