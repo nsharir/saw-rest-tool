@@ -38,6 +38,7 @@ public class Server {
     private RMSReaderAPI rmsReaderAPI;
     private RMSWriterAPI rmsWriterAPI;
     private ResourceBundleAPI resourceBundleAPI;
+    private TenantSettingsAPI tenantSettingsAPI;
     private TenantManagementAPI tenantManagementAPI;
     private UserManagementAPI userManagementAPI;
     private GenericRestAPI genericRestAPI;
@@ -75,6 +76,7 @@ public class Server {
         tenantManagementAPI = new TenantManagementAPI(this);
         userManagementAPI = new UserManagementAPI(this);
         genericRestAPI = new GenericRestAPI(this);
+        tenantSettingsAPI = new TenantSettingsAPI(this);
 
         Log.log("Auth Token: "+ token);
 
@@ -190,6 +192,10 @@ public class Server {
 
     public GenericRestAPI getGenericRestAPI() {
         return genericRestAPI;
+    }
+
+    public TenantSettingsAPI getTenantSettingsAPI() {
+        return tenantSettingsAPI;
     }
 
     public String getTenantId() {
